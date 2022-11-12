@@ -8,8 +8,11 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Knowledge base.
 
-- [ ] 🔴 Collect the minimum information needed for the knowledge base (questions, answers, weights) and the relations needed between them.
-- [ ] 🟡 Define the `normalize_weights` procedure in the knowledge base for transforming a given weight (using its answer identifier) into a value that is easier to handle and understand for the web app. Working implementation in javascript:
+- [ ] 🔴 Refactor the wording **"question"** used along the knowledge base and use **"option"** instead. Example: `option(o1, "...")` instead of `answer(a1, "...")` and `question_options(q1, [o1, o2, o3, o4])` instead of `question_answers(q1, [a1, a2, a3, a4])`.
+- [ ] 🔴 Collect the minimum information needed for the knowledge base (questions, answers, weights) and the relations needed between them, add the corresponding facts into `knowledgeBase.pl` file.
+  - [x] Add facts for the categories `question`, `answer` and `weights`, `question` and `answer` having unique identifiers and `weights` using the same identifier as their corresponding answer.
+  - [ ] Add a set of `question_answers` facts that relates each question id with its corresponding set of answer ids in a list. Example: `question_answers(q1, [a1, a2, a3, a4])`.
+- [ ] 🟡 Define the `normalize_weights` rule in the knowledge base for transforming a given weight (using its answer identifier) into a value that is easier to handle and understand for the web app. Working implementation in javascript:
 
   ```js
   let weightsList = [
