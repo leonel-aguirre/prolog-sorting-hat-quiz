@@ -302,4 +302,34 @@ weights(o122, [30.63227296, -23.60407631, -31.08418312, 25.892524]).
 weights(o123, [-27.37364476, 28.45701138, -23.55695615, 25.02450925]).
 weights(o124, [27.02941592, -27.55102988, 25.78541162, -23.44987827]).
 
+
+question_answers(q1, [o1, o2]).
+question_answers(q2, [o3, o4]).
+question_answers(q3, [o5, o6]).
+question_answers(q4, [o7, o8, o9, o10]).
+question_answers(q5, [o11, o12, o13, o14]).
+question_answers(q6, [o15, o16, o17, o18]).
+question_answers(q7, [o19, o20, o21, o22]).
+question_answers(q8, [o23, o24, o25, o26]).
+question_answers(q9, [o27, o28, o29, o30]).
+question_answers(q10, [o31, o32, o33, o34]).
+question_answers(q11, [o35, o36, o37, o38]).
+question_answers(q12, [o39, o40, o41, o42]).
+question_answers(q13, [o43, o44, o45, o46, o47, o48]).
+question_answers(q14, [o49, o50, o51, o52, o53]).
+question_answers(q15, [o54, o55, o56, o57, o58, o59]).
+question_answers(q16, [o60, o61, o62, o63, o64, o65]).
+question_answers(q17, [o66, o67, o68, o69, o70, o71, o72]).
+question_answers(q18, [o73, o74, o75, o76, o77, o78, o79]).
+question_answers(q19, [o80, o81, o82, o83]).
+question_answers(q20, [o84, o85, o86, o87]).
+question_answers(q21, [o88, o89, o90, o91]).
+question_answers(q22, [o92, o93, o94, o95]).
+question_answers(q23, [o96, o97, o98, o99]).
+question_answers(q24, [o100, o101, o102, o103]).
+question_answers(q25, [o104, o105, o106, o107, o108, o109, o110, o111, o112, o113, o114, o115, o116, o117, o118]).
+question_answers(q26, [o119, o120]).
+question_answers(q27, [o121, o122]).
+question_answers(q28, [o123, o124]).
+
 % 📏😸 Rules Start Here 😸📏
