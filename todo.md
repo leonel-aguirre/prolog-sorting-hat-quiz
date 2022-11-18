@@ -8,6 +8,8 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Knowledge base.
 
+- [ ] 🟡 Define facts for categories and relate them with their corresponding questions. Example: `questions_category(c1, [q1, q2, q3])` or `question_category(c1, q1)` or any other approach that accomplishes the future goals.
+- [ ] 🟡 Define facts for the four possible hogwarts houses. Example: `house(gryffindor), house(ravenclaw) ...`.
 - [ ] 🟡 Define the `normalize_weights` rule in the knowledge base for transforming a given weight (using its option identifier) into a value that is easier to handle and understand for the web app. Working implementation in javascript:
 
   ```js
@@ -18,7 +20,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
   ]
 
   // Should map the given set of weights to values between 0 and 1 for representing
-  // percentages, if an input value is less or equal to 0 then the maped value will
+  // percentages, if an input value is less or equal to 0 then the mapped value will
   // always be 0, otherwise it will become the division between itself by the sum of
   // all the set of input values, after that it will get rounded to the nearest integer
   // and finally get divided by 100. The resulting set of values should always sum up to 1.
@@ -42,7 +44,10 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
   */
   ```
 
+- [ ] 🟢 Create a rule that builds up a list for the user's quiz session question categories configuration, it must contain numbers from 1 to 8 having the value 1 always at the first place and 8 at the last place, in between the remaining numbers (2 to 7), must be arranged randomly. Example: `[1, 4, 7, 2, 6, 3, 5, 8]`, `[1, 7, 5, 4, 2, 6, 3, 8]`.
 - [ ] 🟢 Update `README.md` file with latest project information.
+
+- [ ] 🚧 (WIP) Implement a strategy using `asserta` and `assertz` (or any other approach) for managing and storing the results of a completed quiz. Example: when answering the quiz the user goes through multiple categories of questions (8 in total), a fact must take care of the progress of the user which must be updated during the process, something like `current_question_index(3)`, `category_configuration_list([1, 6, 5, 2, 7, 3, 4, 8])`, `current_question_id(q21)` (any other approach that works should be fine).
 
 #### Web App.
 
@@ -64,3 +69,4 @@ The elements in the TODO list must be classified with the following symbols base
 - 🔴 High priority.
 - 🟡 Medium priority.
 - 🟢 Low priority.
+- 🚧 Task definition is still work in progress.
