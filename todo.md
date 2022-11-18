@@ -15,7 +15,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
     [27.31307938, 25.92258493, -28.87112887, -22.21557617],
     [28.653864, -28.67894522, 26.97274135, -24.67312267],
     [-11.75519742, -10.92370078, -10.86606985, 35.83478687],
-  ];
+  ]
 
   // Should map the given set of weights to values between 0 and 1 for representing
   // percentages, if an input value is less or equal to 0 then the maped value will
@@ -28,8 +28,8 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
       .map((value, _, list) =>
         value > 0 ? value / list.reduce((a, b) => a + b, 0) : value
       )
-      .map((value) => Math.round(value * 100) / 100);
-  };
+      .map((value) => Math.round(value * 100) / 100)
+  }
 
   /*
   let normalizedWeights = weightList.map(normalizeWeights)
@@ -46,7 +46,6 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Web App.
 
-- [ ] 🟡 Initialize and config React app with bare minimum needs for it to work.
 - [ ] 🟡 Test the **[Tau Prolog JavaScript Library](http://tau-prolog.org/)** and determine if it is the best tool for the project.
 
 ### Completed tasks:
@@ -56,6 +55,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 - [x] Collect the minimum information needed for the knowledge base (questions, options, weights) and the relations needed between them, add the corresponding facts into `knowledgeBase.pl` file.
   - [x] Add facts for the categories `question`, `option` and `weights`, `question` and `option` having unique identifiers and `weights` using the same identifier as their corresponding option.
   - [x] Add a set of `question_option` facts that relates each question id with its corresponding set of option ids in a list. Example: `question_option(q1, [o1, o2, o3, o4])`.
+- [x] Initialize and config React app with bare minimum needs for it to work.
 
 ### Priority order:
 
