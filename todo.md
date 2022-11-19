@@ -51,7 +51,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Web App.
 
-- [ ] 🟡 Test the **[Tau Prolog JavaScript Library](http://tau-prolog.org/)** and determine if it is the best tool for the project.
+**😸 List is currently empty 😸**
 
 ### Completed tasks:
 
@@ -61,6 +61,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
   - [x] Add facts for the categories `question`, `option` and `weights`, `question` and `option` having unique identifiers and `weights` using the same identifier as their corresponding option.
   - [x] Add a set of `question_option` facts that relates each question id with its corresponding set of option ids in a list. Example: `question_option(q1, [o1, o2, o3, o4])`.
 - [x] Initialize and config React app with bare minimum needs for it to work.
+- [x] Test the **[Tau Prolog JavaScript Library](http://tau-prolog.org/)** and determine if it is the best tool for the project.
 
 ### Priority order:
 
