@@ -336,3 +336,10 @@ question_options(q27, [o121, o122]).
 question_options(q28, [o123, o124]).
 
 % 📏😸 Rules Start Here 😸📏
+
+% Creates a list with numbers from 1 to 8 placed randomly except for 
+% 1 and 8 being each one at the first and end of the list respectively.
+create_category_order_list(L) :- 
+  random_permutation([2, 3, 4, 5, 6, 7], Two_Through_Seven),
+  append([1], Two_Through_Seven, One_Through_Seven),
+  append(One_Through_Seven, [8], L).
