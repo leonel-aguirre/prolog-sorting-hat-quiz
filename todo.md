@@ -43,7 +43,6 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
   */
   ```
 
-- [ ] 🟢 Create a rule that builds up a list for the user's quiz session question categories configuration, it must contain numbers from 1 to 8 having the value 1 always at the first place and 8 at the last place, in between the remaining numbers (2 to 7), must be arranged randomly. Example: `[1, 4, 7, 2, 6, 3, 5, 8]`, `[1, 7, 5, 4, 2, 6, 3, 8]`.
 - [ ] 🟢 Update `README.md` file with latest project information.
 
 - [ ] 🚧 (WIP) Implement a strategy using `asserta` and `assertz` (or any other approach) for managing and storing the results of a completed quiz. Example: when answering the quiz the user goes through multiple categories of questions (8 in total), a fact must take care of the progress of the user which must be updated during the process, something like `current_question_index(3)`, `category_configuration_list([1, 6, 5, 2, 7, 3, 4, 8])`, `current_question_id(q21)` (any other approach that works should be fine).
@@ -62,6 +61,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 - [x] Initialize and config React app with bare minimum needs for it to work.
 - [x] Test the **[Tau Prolog JavaScript Library](http://tau-prolog.org/)** and determine if it is the best tool for the project.
 - [x] Define facts for categories and relate them with their corresponding questions. Example: `questions_category(c1, [q1, q2, q3])` or `question_category(c1, q1)` or any other approach that accomplishes the future goals.
+- [x] Create a rule that builds up a list for the user's quiz session question categories configuration, it must contain numbers from 1 to 8 having the value 1 always at the first place and 8 at the last place, in between the remaining numbers (2 to 7), must be arranged randomly. Example: `[1, 4, 7, 2, 6, 3, 5, 8]`, `[1, 7, 5, 4, 2, 6, 3, 8]`.
 
 ### Priority order:
 
