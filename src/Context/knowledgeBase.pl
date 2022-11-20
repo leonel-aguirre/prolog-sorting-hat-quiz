@@ -1,3 +1,6 @@
+:- use_module(library(lists)).
+:- use_module(library(random)).
+
 % Data collected from: https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/.
 
 % 1. Each quiz consists of 8 questions.
@@ -302,7 +305,6 @@ weights(o122, [30.63227296, -23.60407631, -31.08418312, 25.892524]).
 weights(o123, [-27.37364476, 28.45701138, -23.55695615, 25.02450925]).
 weights(o124, [27.02941592, -27.55102988, 25.78541162, -23.44987827]).
 
-
 question_options(q1, [o1, o2]).
 question_options(q2, [o3, o4]).
 question_options(q3, [o5, o6]).
@@ -332,13 +334,20 @@ question_options(q26, [o119, o120]).
 question_options(q27, [o121, o122]).
 question_options(q28, [o123, o124]).
 
-questions_category(c1, [q1, q2, q3])
-questions_category(c2, [q4, q5, q6, q7])
-questions_category(c3, [q9, q10, q24, q11, q12, q8])
-questions_category(c4, [q14, q13, q19, q9, q12, q15, q16])
-questions_category(c5, [q16, q17, q18])
-questions_category(c6, [q19, q20, q21, q22, q23, q24])
-questions_category(c7, [q25])
-questions_category(c8, [q26, q27, q28])
+questions_category(c1, [q1, q2, q3]).
+questions_category(c2, [q4, q5, q6, q7]).
+questions_category(c3, [q9, q10, q24, q11, q12, q8]).
+questions_category(c4, [q14, q13, q19, q9, q12, q15, q16]).
+questions_category(c5, [q16, q17, q18]).
+questions_category(c6, [q19, q20, q21, q22, q23, q24]).
+questions_category(c7, [q25]).
+questions_category(c8, [q26, q27, q28]).
 
 % 📏😸 Rules Start Here 😸📏
+
+% Creates a list with numbers from 1 to 8 placed randomly except for 
+% 1 and 8 being each one at the first and end of the list respectively.
+create_category_order_list(L) :- 
+  random_permutation([2, 3, 4, 5, 6, 7], Two_Through_Seven),
+  append([1], Two_Through_Seven, One_Through_Seven),
+  append(One_Through_Seven, [8], L).

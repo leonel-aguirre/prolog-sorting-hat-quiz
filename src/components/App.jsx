@@ -1,26 +1,34 @@
 import "./App.scss"
 
 import { SessionProvider } from "../Context/SessionProvider"
-import Question from "./PrologTests/Question"
-import Option from "./PrologTests/Option"
+import Question from "./PrologTestComponents/Question"
+import Option from "./PrologTestComponents/Option"
+import QueryResult from "./PrologTestComponents/QueryResult"
+import PrologSessionWrapper from "../Context/PrologSessionWrapper"
 
 const App = () => {
   return (
     <SessionProvider>
-      <div className="app">
-        <h1 className="app__text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et veritatis
-          eos id minima est. Nisi vitae dignissimos voluptatum atque autem?
-          Distinctio eligendi quasi possimus, totam sit dolore laborum at.
-          Atque!
-        </h1>
+      <PrologSessionWrapper>
+        <div className="app">
+          <h1 className="app__text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et
+            veritatis eos id minima est. Nisi vitae dignissimos voluptatum atque
+            autem? Distinctio eligendi quasi possimus, totam sit dolore laborum
+            at. Atque!
+          </h1>
 
-        <div className="app__prolog-test-container">
-          <Question questionID={"q1"} />
-          <Option optionID={"o1"} />
-          <Option optionID={"o2"} />
+          <div className="app__prolog-test-container">
+            <Question questionID={"q1"} />
+            <Option optionID={"o1"} />
+            <Option optionID={"o2"} />
+            <hr />
+            <QueryResult queryString={"permutation([1,2,3,4], L)."} />
+            <QueryResult queryString={"random_permutation([1,2,3,4], L)."} />
+            <QueryResult queryString={"create_category_order_list(L)."} />
+          </div>
         </div>
-      </div>
+      </PrologSessionWrapper>
     </SessionProvider>
   )
 }
