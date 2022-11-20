@@ -46,29 +46,29 @@ const DataPersistance = () => {
     )
   }
 
-  const increaseButtonOnClickHandle = () => {
+  const increaseButtonHandler = () => {
     updateFact(currentCategoryIndex + 1)
   }
 
-  const decreaseButtonOnClickHandle = () => {
+  const decreaseButtonHandler = () => {
     updateFact(currentCategoryIndex - 1)
   }
 
   return (
-    <div className="data-persistance">
+    <div className="category-index-controls">
       <button
-        className="data-persistance__increase-button"
-        onClick={increaseButtonOnClickHandle}
+        className="category-index-controls__increase-button"
+        onClick={increaseButtonHandler}
       >
         +
       </button>
       <button
-        className="data-persistance__decrease-button"
-        onClick={decreaseButtonOnClickHandle}
+        className="category-index-controls__decrease-button"
+        onClick={decreaseButtonHandler}
       >
         -
       </button>
-      <p className="data-persistance__value">{currentCategoryIndex}</p>
+      <p className="category-index-controls__value">{currentCategoryIndex}</p>
     </div>
   )
 }
