@@ -1,6 +1,10 @@
 import { createContext, useContext, useReducer } from "react"
 
-import { SET_SESSION, SET_CURRENT_CATEGORY_INDEX } from "../constants"
+import {
+  SET_SESSION,
+  SET_CURRENT_CATEGORY_INDEX,
+  SET_CURRENT_QUESTION_ID,
+} from "../constants"
 
 const SessionContext = createContext(null)
 const SessionDispatchContext = createContext(null)
@@ -8,6 +12,8 @@ const SessionDispatchContext = createContext(null)
 const initialState = {
   session: null,
   currentCategoryIndex: 0,
+  categoryConfigurationList: "[1, 2, 3, 4, 5, 6, 7, 8]",
+  currentQuestionID: "q1",
 }
 
 export const SessionProvider = ({ children }) => {
@@ -42,6 +48,12 @@ export const sessionReducer = (state, action) => {
       return {
         ...state,
         currentCategoryIndex: action.data,
+      }
+    }
+    case SET_CURRENT_QUESTION_ID: {
+      return {
+        ...state,
+        currentQuestionID: action.data,
       }
     }
     default: {
