@@ -349,7 +349,7 @@ questions_category(c8, [q26, q27, q28]).
 :- dynamic(persistance_variable/2).
 
 % Initial values.
-persistance_variable(accumulator, 0). 
+persistance_variable(currentCategoryIndex, 0). 
 persistance_variable(categoryConfigurationList, [1, 2, 3, 4, 5, 6, 7, 8]).
 persistance_variable(currentQuestionID, q1).
 

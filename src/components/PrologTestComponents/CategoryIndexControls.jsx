@@ -16,10 +16,10 @@ const DataPersistance = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Queries the value of the accumulator 'variable' from the knowledge base and
+  // Queries the value of the currentCategoryIndex 'variable' from the knowledge base and
   // sets it into the store.
   const updateValueFromKnowledgeBase = () => {
-    query(`persistance_variable(accumulator, R).`, (result) => {
+    query(`persistance_variable(currentCategoryIndex, R).`, (result) => {
       const formattedResult = Number(result.replace("R = ", ""))
 
       dispatch({
@@ -29,15 +29,15 @@ const DataPersistance = () => {
     })
   }
 
-  // Retracts the fact that matches the current value of the accumulator 'variable'
+  // Retracts the fact that matches the current value of the currentCategoryIndex 'variable'
   // and then creates a new instance of it with the updated value in the knowledge base.
   // At the end the value is updated in the store by updateValueFromKnowledgeBase.
   const updateFact = (newValue) => {
     query(
-      `retract(persistance_variable(accumulator, ${currentCategoryIndex})).`,
+      `retract(persistance_variable(currentCategoryIndex, ${currentCategoryIndex})).`,
       () => {
         query(
-          `assertz(persistance_variable(accumulator, ${newValue})).`,
+          `assertz(persistance_variable(currentCategoryIndex, ${newValue})).`,
           () => {
             updateValueFromKnowledgeBase()
           }
