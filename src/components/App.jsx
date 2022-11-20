@@ -9,6 +9,8 @@ import CategoryIndexControls from "./PrologTestComponents/CategoryIndexControls"
 import CategoryIndexRenderer from "./PrologTestComponents/CategoryIndexRendered"
 import QuestionIDControls from "./PrologTestComponents/QuestionIDControls"
 import QuestionIDRenderer from "./PrologTestComponents/QuestionIDRenderer"
+import CategoryConfigurationListRenderer from "./PrologTestComponents/CategoryConfigurationListRenderer"
+import CategoryConfigurationListControls from "./PrologTestComponents/CategoryConfigurationListControls"
 
 const App = () => {
   return (
@@ -38,6 +40,10 @@ const App = () => {
             <QuestionIDControls />
             <QuestionIDRenderer instanceID={"A"} />
             <QuestionIDRenderer instanceID={"B"} />
+            <hr />
+            <CategoryConfigurationListControls />
+            <CategoryConfigurationListRenderer instanceID={"A"} />
+            <CategoryConfigurationListRenderer instanceID={"B"} />
           </div>
         </div>
       </PrologSessionWrapper>
