@@ -343,7 +343,20 @@ questions_category(c6, [q19, q20, q21, q22, q23, q24]).
 questions_category(c7, [q25]).
 questions_category(c8, [q26, q27, q28]).
 
-% 📏😸 Rules Start Here 😸📏
+
+% 🛑💾 Data Persistance 💾🛑 +++
+
+:- dynamic(persistance_variable/2).
+
+% Initial values.
+persistance_variable(currentCategoryIndex, 0). 
+persistance_variable(categoryConfigurationList, [1, 2, 3, 4, 5, 6, 7, 8]).
+persistance_variable(currentQuestionID, q1).
+
+% 🛑💾 Data Persistance 💾🛑 ---
+
+
+% 📏😸 Rules Start Here 😸📏 +++
 
 % Creates a list with numbers from 1 to 8 placed randomly except for 
 % 1 and 8 being each one at the first and end of the list respectively.
@@ -351,3 +364,5 @@ create_category_order_list(L) :-
   random_permutation([2, 3, 4, 5, 6, 7], Two_Through_Seven),
   append([1], Two_Through_Seven, One_Through_Seven),
   append(One_Through_Seven, [8], L).
+
+% 📏😸 Rules Start Here 😸📏 ---

@@ -5,6 +5,12 @@ import Question from "./PrologTestComponents/Question"
 import Option from "./PrologTestComponents/Option"
 import QueryResult from "./PrologTestComponents/QueryResult"
 import PrologSessionWrapper from "../Context/PrologSessionWrapper"
+import CategoryIndexControls from "./PrologTestComponents/CategoryIndexControls"
+import CategoryIndexRenderer from "./PrologTestComponents/CategoryIndexRendered"
+import QuestionIDControls from "./PrologTestComponents/QuestionIDControls"
+import QuestionIDRenderer from "./PrologTestComponents/QuestionIDRenderer"
+import CategoryConfigurationListRenderer from "./PrologTestComponents/CategoryConfigurationListRenderer"
+import CategoryConfigurationListControls from "./PrologTestComponents/CategoryConfigurationListControls"
 
 const App = () => {
   return (
@@ -26,6 +32,18 @@ const App = () => {
             <QueryResult queryString={"permutation([1,2,3,4], L)."} />
             <QueryResult queryString={"random_permutation([1,2,3,4], L)."} />
             <QueryResult queryString={"create_category_order_list(L)."} />
+            <hr />
+            <CategoryIndexControls />
+            <CategoryIndexRenderer instanceID={"A"} />
+            <CategoryIndexRenderer instanceID={"B"} />
+            <hr />
+            <QuestionIDControls />
+            <QuestionIDRenderer instanceID={"A"} />
+            <QuestionIDRenderer instanceID={"B"} />
+            <hr />
+            <CategoryConfigurationListControls />
+            <CategoryConfigurationListRenderer instanceID={"A"} />
+            <CategoryConfigurationListRenderer instanceID={"B"} />
           </div>
         </div>
       </PrologSessionWrapper>
