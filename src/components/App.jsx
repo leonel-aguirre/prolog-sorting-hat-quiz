@@ -5,6 +5,8 @@ import Question from "./PrologTestComponents/Question"
 import Option from "./PrologTestComponents/Option"
 import QueryResult from "./PrologTestComponents/QueryResult"
 import PrologSessionWrapper from "../Context/PrologSessionWrapper"
+import DataPersistance from "./PrologTestComponents/DataPersistance"
+import CategoryIndexRenderer from "./PrologTestComponents/CategoryIndexRendered"
 
 const App = () => {
   return (
@@ -26,6 +28,10 @@ const App = () => {
             <QueryResult queryString={"permutation([1,2,3,4], L)."} />
             <QueryResult queryString={"random_permutation([1,2,3,4], L)."} />
             <QueryResult queryString={"create_category_order_list(L)."} />
+            <hr />
+            <DataPersistance />
+            <CategoryIndexRenderer instanceID={"A"} />
+            <CategoryIndexRenderer instanceID={"B"} />
           </div>
         </div>
       </PrologSessionWrapper>
