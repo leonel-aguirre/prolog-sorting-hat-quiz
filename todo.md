@@ -8,8 +8,8 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Knowledge base.
 
-- [ ] 🟡 Define facts for categories and relate them with their corresponding questions. Example: `questions_category(c1, [q1, q2, q3])` or `question_category(c1, q1)` or any other approach that accomplishes the future goals.
-- [ ] 🟡 Define facts for the four possible hogwarts houses. Example: `house(gryffindor), house(ravenclaw) ...`.
+- [x] 🟡 Define facts for categories and relate them with their corresponding questions. Example: `questions_category(c1, [q1, q2, q3])` or `question_category(c1, q1)` or any other approach that accomplishes the future goals.
+- [x] 🟡 Define facts for the four possible hogwarts houses. Example: `house(gryffindor), house(ravenclaw) ...`.
 - [ ] 🟡 Define the `normalize_weights` rule in the knowledge base for transforming a given weight (using its option identifier) into a value that is easier to handle and understand for the web app. Working implementation in javascript:
 
   ```js

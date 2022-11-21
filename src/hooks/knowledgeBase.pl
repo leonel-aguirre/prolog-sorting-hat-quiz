@@ -332,4 +332,33 @@ question_options(q26, [o119, o120]).
 question_options(q27, [o121, o122]).
 question_options(q28, [o123, o124]).
 
+questions_category(c1, [q1, q2, q3]).
+questions_category(c2, [q4, q5, q6, q7]).
+questions_category(c3, [q9, q10, q24, q11, q12, q8]).
+questions_category(c4, [q14, q13, q19, q9, q12, q15, q16]).
+questions_category(c5, [q16, q17, q18]).
+questions_category(c6, [q19, q20, q21, q22, q23, q24]).
+questions_category(c7, [q25]).
+questions_category(c8, [q26, q27, q28]).
+
+house("Gryffindor").
+house("Hufflepuff").
+house("Ravenclaw").
+house("Slytherin").
+
+
+
 % 📏😸 Rules Start Here 😸📏
+
+normalizeWeights([X|Xs], R) :- 
+	maplist(isNegative, [X|Xs], R),
+	maplist(calculateNotZeros, [X|Xs], [X|Xs], R).
+
+isNegative(Value, Result) :-
+	(Value =< 0 -> Result is 0; Result is Value).
+
+calculateNotZeros(Value, [X|Xs], Result) :-
+	(Value > 0 -> Result is (Value / foldl(add, [X|Xs], 0, Result)); Result is Value).
+
+add(A, B, C) :-
+	C is A + B.
