@@ -47,7 +47,8 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Web App.
 
-**😸 List is currently empty 😸**
+- 🟡 Add scss rules for breakpoints and expose them through the `_breakpoints.scss` file.
+- 🟢 Implement the homepage of the site, at this point the app might need the integration of react router, the homepage should be accessible in the route `/`.
 
 ### Completed tasks:
 
@@ -61,6 +62,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 - [x] Define facts for categories and relate them with their corresponding questions. Example: `questions_category(c1, [q1, q2, q3])` or `question_category(c1, q1)` or any other approach that accomplishes the future goals.
 - [x] Create a rule that builds up a list for the user's quiz session question categories configuration, it must contain numbers from 1 to 8 having the value 1 always at the first place and 8 at the last place, in between the remaining numbers (2 to 7), must be arranged randomly. Example: `[1, 4, 7, 2, 6, 3, 5, 8]`, `[1, 7, 5, 4, 2, 6, 3, 8]`.
 - [x] Implement a strategy using `asserta`, `assertz` and `retract` (or any other approach) for managing and storing the results of a completed quiz. Example: when answering the quiz the user goes through multiple categories of questions (8 in total), a fact must take care of the progress of the user which must be updated during the process, something like `persistance_variable(currentCategoryIndex, 3)`, `persistance_variable(categoryConfigurationList, [1, 6, 5, 2, 7, 3, 4, 8])`, `persistance_variable(currentQuestionID, q21)` (any other approach that works should be fine).
+- [x] Declare sass font style rules and expose them through the `_typography.scss` file. Include the **Open Sans** font into the App.
 
 ### Priority order:
 
