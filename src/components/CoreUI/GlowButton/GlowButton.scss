@@ -1,0 +1,106 @@
+@use "../../../sass/index" as *;
+
+$glow-button-background-color: $color-black;
+
+.is-purple {
+  $hover-background-color: $color-purple;
+  $purple-gradient: monochrome-gradient($color-purple, 45deg);
+
+  background: linear-gradient(
+        $glow-button-background-color,
+        $glow-button-background-color
+      )
+      padding-box,
+    $purple-gradient border-box;
+
+  &:hover {
+    box-shadow: 0 0 20px $color-purple;
+    background: $purple-gradient padding-box, $purple-gradient border-box;
+  }
+}
+
+.is-red {
+  $hover-background-color: $color-red;
+  $red-gradient: monochrome-gradient($color-red, 45deg);
+
+  background: linear-gradient(
+        $glow-button-background-color,
+        $glow-button-background-color
+      )
+      padding-box,
+    $red-gradient border-box;
+
+  &:hover {
+    box-shadow: 0 0 20px $color-red;
+    background: $red-gradient padding-box, $red-gradient border-box;
+  }
+}
+
+.is-blue {
+  $hover-background-color: $color-blue;
+  $blue-gradient: monochrome-gradient($color-blue, 45deg);
+
+  background: linear-gradient(
+        $glow-button-background-color,
+        $glow-button-background-color
+      )
+      padding-box,
+    $blue-gradient border-box;
+
+  &:hover {
+    box-shadow: 0 0 20px $color-blue;
+    background: $blue-gradient padding-box, $blue-gradient border-box;
+  }
+}
+
+.is-green {
+  $hover-background-color: $color-green;
+  $green-gradient: monochrome-gradient($color-green, 45deg);
+
+  background: linear-gradient(
+        $glow-button-background-color,
+        $glow-button-background-color
+      )
+      padding-box,
+    $green-gradient border-box;
+
+  &:hover {
+    box-shadow: 0 0 20px $color-green;
+    background: $green-gradient padding-box, $green-gradient border-box;
+  }
+}
+
+.is-yellow {
+  $hover-background-color: $color-yellow;
+  $yellow-gradient: monochrome-gradient($color-yellow, 45deg);
+
+  background: linear-gradient(
+        $glow-button-background-color,
+        $glow-button-background-color
+      )
+      padding-box,
+    $yellow-gradient border-box;
+
+  &:hover {
+    box-shadow: 0 0 20px $color-yellow;
+    background: $yellow-gradient padding-box, $yellow-gradient border-box;
+  }
+}
+
+.glow-button {
+  $glow-button-text-color: $color-white;
+
+  @extend %h4-sans;
+
+  padding: $space-2 $space-6;
+  color: $glow-button-text-color;
+  font-weight: $font-weight-bold;
+  transition: box-shadow 0.5s, color 0.5s;
+  border-radius: 15px;
+  border: 2px solid transparent;
+
+  &:hover {
+    cursor: pointer;
+    color: $color-black;
+  }
+}
