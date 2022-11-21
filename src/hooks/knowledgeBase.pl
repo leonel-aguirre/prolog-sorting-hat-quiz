@@ -352,7 +352,8 @@ house("Slytherin").
 
 normalizeWeights([X|Xs], R) :- 
 	maplist(isNegative, [X|Xs], R),
-	maplist(calculateNotZeros, [X|Xs], [X|Xs], R).
+	maplist(calculateNotZeros, [X|Xs], [X|Xs], R),
+	maplist(roundValues, [X|Xs], R).
 
 isNegative(Value, Result) :-
 	(Value =< 0 -> Result is 0; Result is Value).
@@ -362,3 +363,11 @@ calculateNotZeros(Value, [X|Xs], Result) :-
 
 add(A, B, C) :-
 	C is A + B.
+
+roundValues(Value, Result) :-
+	Result is round(Value * 100) / 100.
+
+
+
+division(Value, [X|Xs], Result) :-
+	Result is Value / foldl(add, [X|Xs], 0, Result).
