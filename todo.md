@@ -47,7 +47,6 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Web App.
 
-- [ ] 🟡 Add sass rules for spacing under the `_spacing.scss` file and expose them.
 - [ ] 🟢 Implement the homepage of the site, at this point the app might need the integration of react router, the homepage should be accessible in the route `/`.
 
 ### Completed tasks:
@@ -64,6 +63,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 - [x] Implement a strategy using `asserta`, `assertz` and `retract` (or any other approach) for managing and storing the results of a completed quiz. Example: when answering the quiz the user goes through multiple categories of questions (8 in total), a fact must take care of the progress of the user which must be updated during the process, something like `persistance_variable(currentCategoryIndex, 3)`, `persistance_variable(categoryConfigurationList, [1, 6, 5, 2, 7, 3, 4, 8])`, `persistance_variable(currentQuestionID, q21)` (any other approach that works should be fine).
 - [x] Declare sass font style rules and expose them through the `_typography.scss` file. Include the **Open Sans** font into the App.
 - [x] Add scss rules for breakpoints and expose them through the `_breakpoints.scss` file.
+- [x] Add sass rules for spacing under the `_spacing.scss` file and expose them.
 
 ### Priority order:
 
