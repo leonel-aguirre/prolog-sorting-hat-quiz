@@ -4,7 +4,7 @@ import { SET_CURRENT_CATEGORY_INDEX } from "../../constants"
 import { useSession, useSessionDispatch } from "../../Context/SessionProvider"
 import useProlog from "../../hooks/useProlog"
 
-const DataPersistance = () => {
+const CategoryIndexControls = () => {
   const { query } = useProlog()
 
   const dispatch = useSessionDispatch()
@@ -73,4 +73,4 @@ const DataPersistance = () => {
   )
 }
 
-export default DataPersistance
+export default CategoryIndexControls
