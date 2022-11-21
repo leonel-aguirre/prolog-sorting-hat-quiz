@@ -1,0 +1,55 @@
+@use "../../sass/index" as *;
+
+.home {
+  $background-color: $color-black;
+  $red-gradient: monochrome-gradient($color-red, 45deg);
+  $blue-gradient: monochrome-gradient($color-blue, 45deg);
+
+  background: $background-color;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 $space-2;
+
+  &__heading-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__heading-1 {
+    @extend %h1-sans;
+
+    text-align: center;
+  }
+
+  &__prolog-text {
+    background: $red-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__react-text {
+    background: $blue-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__heading-2 {
+    @extend %h3-sans;
+
+    text-align: center;
+  }
+
+  &__buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: $space-1;
+    margin-top: $space-5;
+  }
+}
