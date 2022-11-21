@@ -92,7 +92,7 @@ $glow-button-background-color: $color-black;
 
   @extend %h4-sans;
 
-  padding: $space-2;
+  padding: $space-2 $space-6;
   color: $glow-button-text-color;
   font-weight: $font-weight-bold;
   transition: box-shadow 0.5s, color 0.5s;

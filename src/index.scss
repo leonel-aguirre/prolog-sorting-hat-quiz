@@ -6,3 +6,15 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+a {
+  $anchor-accent-color: $color-purple;
+
+  color: $anchor-accent-color;
+  text-decoration: none;
+
+  &:hover {
+    filter: drop-shadow(0 0 20px $anchor-accent-color);
+    color: lighten-2($anchor-accent-color);
+  }
+}
