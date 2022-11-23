@@ -1,73 +1,137 @@
 import { useEffect, useState } from "react"
 
-import { SET_CATEGORY_CONFIGURATION_LIST } from "../../constants"
-import { useSession, useSessionDispatch } from "../../Context/SessionProvider"
+import {
+  SET_CATEGORY_CONFIGURATION_LIST,
+  SET_CURRENT_CATEGORY_INDEX,
+  SET_CURRENT_QUESTION_ID,
+} from "../../constants"
+import { useSession } from "../../Context/SessionProvider"
 import useProlog from "../../hooks/useProlog"
+import Question from "./Question/Question"
 
 const Quiz = () => {
-  const [isLoadingCategoryOrderList, setIsLoadingCategoryOrderList] =
-    useState(true)
-  const { query } = useProlog()
-  const dispatch = useSessionDispatch()
-  const { categoryConfigurationList } = useSession()
+  const [isLoading, setIsLoading] = useState(true)
+  const [currentQuestion, setCurrentQuestion] = useState("")
+  const [currentOptionsIDS, setCurrentOptionsIDs] = useState([])
 
-  // Updates the store with the initial value from the knowledge base.
+  const {
+    query,
+    updatePersistanceVariable,
+    updateStoreValueFromKnowledgeBase,
+  } = useProlog()
+
+  const { categoryConfigurationList, currentCategoryIndex, currentQuestionID } =
+    useSession()
+
+  // Updates the store with the initial values from the knowledge base.
   useEffect(() => {
-    updateValueFromKnowledgeBase()
+    updateStoreValueFromKnowledgeBase(
+      "categoryConfigurationList",
+      SET_CATEGORY_CONFIGURATION_LIST
+    )
+
+    updateStoreValueFromKnowledgeBase(
+      "currentCategoryIndex",
+      SET_CURRENT_CATEGORY_INDEX
+    )
+
+    updateStoreValueFromKnowledgeBase(
+      "currentQuestionID",
+      SET_CURRENT_QUESTION_ID
+    )
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Generates a new category order list and passes it into updateFact.
+  // Generates a new category order list and updates both store and knowledge base.
   useEffect(() => {
     query(`create_category_order_list(L).`, (result) => {
       const formattedResult = result.replace("L = ", "")
 
-      updateFact(formattedResult)
+      updatePersistanceVariable(
+        "categoryConfigurationList",
+        categoryConfigurationList,
+        formattedResult,
+        SET_CATEGORY_CONFIGURATION_LIST
+      )
     })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Queries the value of the categoryConfigurationList 'variable' from the knowledge base and
-  // sets it into the store.
-  const updateValueFromKnowledgeBase = () => {
-    query(`persistance_variable(categoryConfigurationList, R).`, (result) => {
-      const formattedResult = result.replace("R = ", "")
+  // Whenever currentCategoryIndex is updated, a new question ID is generated
+  // randomly based on the current category possible questions.
+  useEffect(() => {
+    setIsLoading(true)
 
-      dispatch({
-        type: SET_CATEGORY_CONFIGURATION_LIST,
-        data: formattedResult,
-      })
-    })
-  }
+    const categoryID = JSON.parse(categoryConfigurationList)[
+      currentCategoryIndex
+    ]
 
-  // Retracts the fact that matches the current value of the categoryConfigurationList 'variable'
-  // and then creates a new instance of it with the updated value in the knowledge base.
-  // At the end the value is updated in the store by updateValueFromKnowledgeBase.
-  const updateFact = (newValue) => {
     query(
-      `retract(persistance_variable(categoryConfigurationList, ${categoryConfigurationList})).`,
-      () => {
-        query(
-          `assertz(persistance_variable(categoryConfigurationList, ${newValue})).`,
-          () => {
-            updateValueFromKnowledgeBase()
+      `random_question_id_from_category(c${categoryID}, Q_ID).`,
+      (result) => {
+        const questionID = result.replace("Q_ID = ", "")
 
-            // Emulate a minimal waiting period.
-            setTimeout(() => setIsLoadingCategoryOrderList(false), 1000)
-          }
+        updatePersistanceVariable(
+          "currentQuestionID",
+          currentQuestionID,
+          questionID,
+          SET_CURRENT_QUESTION_ID
         )
       }
     )
-  }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentCategoryIndex])
+
+  // Whenever currentQuestionID is updated, the question options of
+  // it are fetched and set into stat.
+  useEffect(() => {
+    query(`question(${currentQuestionID}, Q).`, (result) => {
+      const question = result
+        .replaceAll(",,", ",~")
+        .replaceAll(/\[|\]|,|Q = /g, "")
+        .replaceAll("~", ",")
+
+      setCurrentQuestion(question)
+
+      query(`question_options(${currentQuestionID}, O_List).`, (result) => {
+        const optionsIDs = result
+          .replace("O_List = ", "")
+          .replaceAll(/\[|\]/g, "")
+          .split(",")
+
+        setCurrentOptionsIDs(optionsIDs)
+
+        // Emulate a minimal waiting period.
+        setTimeout(() => setIsLoading(false), 1000)
+      })
+    })
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentQuestionID])
 
   return (
     <div className="quiz">
       <pre>
-        <code>{categoryConfigurationList}</code>
+        <code>
+          {JSON.stringify(
+            {
+              categoryConfigurationList: JSON.parse(categoryConfigurationList),
+              currentCategoryIndex,
+              currentQuestionID,
+            },
+            null,
+            2
+          )}
+        </code>
       </pre>
-      {isLoadingCategoryOrderList ? <h1>Loading...</h1> : <h1>QUIZ</h1>}
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <Question question={currentQuestion} optionIDs={currentOptionsIDS} />
+      )}
     </div>
   )
 }

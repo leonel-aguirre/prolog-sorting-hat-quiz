@@ -48,7 +48,7 @@ export const sessionReducer = (state, action) => {
     case SET_CURRENT_CATEGORY_INDEX: {
       return {
         ...state,
-        currentCategoryIndex: action.data,
+        currentCategoryIndex: Number(action.data),
       }
     }
     case SET_CATEGORY_CONFIGURATION_LIST: {
