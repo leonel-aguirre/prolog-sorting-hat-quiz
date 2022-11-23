@@ -360,10 +360,7 @@ questions_category(c6, [q19, q20, q21, q22, q23, q24]).
 questions_category(c7, [q25]).
 questions_category(c8, [q26, q27, q28]).
 
-house("Gryffindor").
-house("Hufflepuff").
-house("Ravenclaw").
-house("Slytherin").
+houses(["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]).
 
 % ✅💾 Facts 💾✅ ---
 
