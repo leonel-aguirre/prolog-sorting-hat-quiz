@@ -8,7 +8,6 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Knowledge base.
 
-- [ ] 🟡 Define facts for the four possible hogwarts houses. Example: `house(gryffindor), house(ravenclaw) ...`.
 - [ ] 🟡 Define the `normalize_weights` rule in the knowledge base for transforming a given weight (using its option identifier) into a value that is easier to handle and understand for the web app. Working implementation in javascript:
 
   ```js
@@ -87,6 +86,8 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
   ```
 
 - [x] Implement the quiz page UI with minimal functionality, at this point it is possible to retrieve data from the knowledge base and simulate the flow of going through the 8 questions of the quiz, using the category configuration list.
+- [x] Define facts for categories and relate them with their corresponding questions. Example: `questions_category(c1, [q1, q2, q3])` or `question_category(c1, q1)` or any other approach that accomplishes the future goals.
+- [x] Define facts for the four possible hogwarts houses. Example: `house(gryffindor), house(ravenclaw) ...` (Modified to just one list with the four houses).
 
 ### Priority order:
 

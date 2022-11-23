@@ -360,6 +360,8 @@ questions_category(c6, [q19, q20, q21, q22, q23, q24]).
 questions_category(c7, [q25]).
 questions_category(c8, [q26, q27, q28]).
 
+houses(["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]).
+
 % ✅💾 Facts 💾✅ ---
 
 
@@ -389,5 +391,31 @@ create_category_order_list(L) :-
 random_question_id_from_category(C, Q) :-
   questions_category(C, Q_List),
   random_member(Q, Q_List).
+
+% Normalizes the given list of weights, negatives are excluded and 
+% remaining numbers are divided by the sum of the list and then rounded 
+% to two decimal places.
+normalizeWeights(Weights, R) :- 
+	maplist(noNegative, Weights, Non_Negatives),
+	foldl(add, Non_Negatives, 0, List_Sum),
+	maplist(divideBy(List_Sum), Non_Negatives, Divided_Weights),
+	maplist(roundTwoDecimals, Divided_Weights, R).
+
+% Returns 0 if the given value is negative of 0, if not the 
+% value remains the same.
+noNegative(Value, R) :-
+	(Value =< 0 -> R is 0; R is Value).
+
+% Divides the two given numbers. Note that A is always the denominator.
+divideBy(A, B, R) :-
+	R is B / A.
+
+% Sums the two given numbers.
+add(A, B, R) :-
+	R is A + B.
+
+% Rounds the given value to two decimal places.
+roundTwoDecimals(Value, R) :-
+	R is round(Value * 100) / 100.
 
 % 📏😸 Rules Start Here 😸📏 ---
