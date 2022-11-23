@@ -8,45 +8,29 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Knowledge base.
 
-- [ ] 🟡 Define the `normalize_weights` rule in the knowledge base for transforming a given weight (using its option identifier) into a value that is easier to handle and understand for the web app. Working implementation in javascript:
+- [ ] 🟡 Create a procedure that determines which house to return based on the results array. The results array will be the sum of the weights from the options the user selected for all the questions during the quiz, so it will be of the following shape: `[0.75, 0.15, 0.1, 0.1]`. Example:
 
-  ```js
-  let weightsList = [
-    [27.31307938, 25.92258493, -28.87112887, -22.21557617],
-    [28.653864, -28.67894522, 26.97274135, -24.67312267],
-    [-11.75519742, -10.92370078, -10.86606985, 35.83478687],
-  ]
+  ```pl
+  determine_house([0.75, 0.15, 0.1, 0.1], R).
+  % R = "Gryffindor".
 
-  // Should map the given set of weights to values between 0 and 1 for representing
-  // percentages, if an input value is less or equal to 0 then the mapped value will
-  // always be 0, otherwise it will become the division between itself by the sum of
-  // all the set of input values, after that it will get rounded to the nearest integer
-  // and finally get divided by 100. The resulting set of values should always sum up to 1.
-  const normalizeWeights = (weights) => {
-    return weights
-      .map((value) => (value <= 0 ? 0 : value))
-      .map((value, _, list) =>
-        value > 0 ? value / list.reduce((a, b) => a + b, 0) : value
-      )
-      .map((value) => Math.round(value * 100) / 100)
-  }
+  determine_house([0.15, 0.75, 0.1, 0.1], R).
+  % R = "Ravenclaw".
 
-  /*
-  let normalizedWeights = weightList.map(normalizeWeights)
-  
-  normalizeWeights -> [
-  	[0.51,  0.49,  0,  0]
-  	[0.52,  0,  0.48,  0]
-  	[0,  0,  0,  1]
-  ]
-  */
+  determine_house([0.1, 0.1, 0.75, 0.15], R).
+  % R = "Hufflepuff".
+
+  determine_house([0.1, 0.1, 0.15, 0.75], R).
+  % R = "Slytherin".
   ```
+
+  **Note:** Use the already existing `houses` fact retrieve the resulting string, the index of the highest value will match the winning house.
 
 #### Web App.
 
 - [ ] 🟡 Implement the results page UI with minimal functionality, it must calculate the users results and give it the chance to log them into the history.
-- [ ] 🟢 Connect app with firebase, the goal is to store and load the history from there.
-- [ ] 🟢 Implement the functionality of the History page, it must only load the records from firebase and show them to the user.
+- [ ] 🟡 Connect app with firebase, the goal is to store and load the history from there.
+- [ ] 🟡 Implement the functionality of the History page, it must only load the records from firebase and show them to the user.
 - [ ] 🟢 Implement the styling for the Quiz page.
 - [ ] 🟢 Implement the styling for the Results page.
 - [ ] 🟢 Implement the styling for the History page.
@@ -55,6 +39,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 - [ ] 🟢 Update `README.md` file with latest project information, it must contain how to run the project from start to finish.
 - [ ] 🟢 Deploy the site into GitHub pages.
+- [ ] 🟢 Update the site's icon.
 
 ### Completed tasks:
 
@@ -88,6 +73,39 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 - [x] Implement the quiz page UI with minimal functionality, at this point it is possible to retrieve data from the knowledge base and simulate the flow of going through the 8 questions of the quiz, using the category configuration list.
 - [x] Define facts for categories and relate them with their corresponding questions. Example: `questions_category(c1, [q1, q2, q3])` or `question_category(c1, q1)` or any other approach that accomplishes the future goals.
 - [x] Define facts for the four possible hogwarts houses. Example: `house(gryffindor), house(ravenclaw) ...` (Modified to just one list with the four houses).
+- [x] Define the `normalize_weights` rule in the knowledge base for transforming a given weight (using its option identifier) into a value that is easier to handle and understand for the web app. Working implementation in javascript:
+
+  ```js
+  let weightsList = [
+    [27.31307938, 25.92258493, -28.87112887, -22.21557617],
+    [28.653864, -28.67894522, 26.97274135, -24.67312267],
+    [-11.75519742, -10.92370078, -10.86606985, 35.83478687],
+  ]
+
+  // Should map the given set of weights to values between 0 and 1 for representing
+  // percentages, if an input value is less or equal to 0 then the mapped value will
+  // always be 0, otherwise it will become the division between itself by the sum of
+  // all the set of input values, after that it will get rounded to the nearest integer
+  // and finally get divided by 100. The resulting set of values should always sum up to 1.
+  const normalizeWeights = (weights) => {
+    return weights
+      .map((value) => (value <= 0 ? 0 : value))
+      .map((value, _, list) =>
+        value > 0 ? value / list.reduce((a, b) => a + b, 0) : value
+      )
+      .map((value) => Math.round(value * 100) / 100)
+  }
+
+  /*
+  let normalizedWeights = weightList.map(normalizeWeights)
+  
+  normalizeWeights -> [
+  	[0.51,  0.49,  0,  0]
+  	[0.52,  0,  0.48,  0]
+  	[0,  0,  0,  1]
+  ]
+  */
+  ```
 
 ### Priority order:
 

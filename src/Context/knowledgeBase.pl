@@ -360,7 +360,7 @@ questions_category(c6, [q19, q20, q21, q22, q23, q24]).
 questions_category(c7, [q25]).
 questions_category(c8, [q26, q27, q28]).
 
-houses(["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]).
+houses(["Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin"]).
 
 % ✅💾 Facts 💾✅ ---
 
@@ -377,7 +377,7 @@ persistance_variable(currentQuestionID, q1).
 % 🛑💾 Data Persistance 💾🛑 ---
 
 
-% 📏😸 Rules Start Here 😸📏 +++
+% 📏😸 Rules 😸📏 +++
 
 % Creates a list with numbers from 1 to 8 placed randomly except for 
 % 1 and 8 being each one at the first and end of the list respectively.
@@ -418,4 +418,4 @@ add(A, B, R) :-
 roundTwoDecimals(Value, R) :-
 	R is round(Value * 100) / 100.
 
-% 📏😸 Rules Start Here 😸📏 ---
+% 📏😸 Rules 😸📏 ---
