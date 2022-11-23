@@ -14,47 +14,32 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState("")
   const [currentOptionsIDS, setCurrentOptionsIDs] = useState([])
 
-  const {
-    query,
-    updatePersistanceVariable,
-    updateStoreValueFromKnowledgeBase,
-  } = useProlog()
+  const { query, updatePersistanceVariable } = useProlog()
 
   const { categoryConfigurationList, currentCategoryIndex, currentQuestionID } =
     useSession()
 
-  // Updates the store with the initial values from the knowledge base.
+  // Sets currentCategoryIndex to 0 and then generates a new category order list,
+  // both values are stored in knowledge base and store.
   useEffect(() => {
-    updateStoreValueFromKnowledgeBase(
-      "categoryConfigurationList",
-      SET_CATEGORY_CONFIGURATION_LIST
-    )
-
-    updateStoreValueFromKnowledgeBase(
+    updatePersistanceVariable(
       "currentCategoryIndex",
-      SET_CURRENT_CATEGORY_INDEX
+      currentCategoryIndex,
+      0,
+      SET_CURRENT_CATEGORY_INDEX,
+      () => {
+        query(`create_category_order_list(L).`, (result) => {
+          const formattedResult = result.replace("L = ", "")
+
+          updatePersistanceVariable(
+            "categoryConfigurationList",
+            categoryConfigurationList,
+            formattedResult,
+            SET_CATEGORY_CONFIGURATION_LIST
+          )
+        })
+      }
     )
-
-    updateStoreValueFromKnowledgeBase(
-      "currentQuestionID",
-      SET_CURRENT_QUESTION_ID
-    )
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  // Generates a new category order list and updates both store and knowledge base.
-  useEffect(() => {
-    query(`create_category_order_list(L).`, (result) => {
-      const formattedResult = result.replace("L = ", "")
-
-      updatePersistanceVariable(
-        "categoryConfigurationList",
-        categoryConfigurationList,
-        formattedResult,
-        SET_CATEGORY_CONFIGURATION_LIST
-      )
-    })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
