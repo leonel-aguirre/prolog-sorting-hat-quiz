@@ -7,6 +7,7 @@ import PrologSessionWrapper from "../Context/PrologSessionWrapper"
 import Sandbox from "./PrologTestComponents/SandBox"
 import Home from "./Home/Home"
 import Quiz from "./Quiz/Quiz"
+import Results from "./Results/Results"
 import History from "./History/History"
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/history",
     element: <History />,
+  },
+  {
+    path: "/results",
+    element: <Results />,
   },
   {
     path: "/sandbox",

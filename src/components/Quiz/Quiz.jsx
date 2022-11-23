@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 import {
   SET_CATEGORY_CONFIGURATION_LIST,
@@ -13,11 +14,20 @@ const Quiz = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [currentQuestion, setCurrentQuestion] = useState("")
   const [currentOptionsIDS, setCurrentOptionsIDs] = useState([])
+  const navigate = useNavigate()
 
   const { query, updatePersistanceVariable } = useProlog()
 
   const { categoryConfigurationList, currentCategoryIndex, currentQuestionID } =
     useSession()
+
+  useEffect(() => {
+    if (currentCategoryIndex > 7) {
+      navigate("/results")
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentCategoryIndex])
 
   // Sets currentCategoryIndex to 0 and then generates a new category order list,
   // both values are stored in knowledge base and store.
