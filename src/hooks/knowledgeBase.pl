@@ -350,24 +350,21 @@ house("Slytherin").
 
 % 📏😸 Rules Start Here 😸📏
 
-normalizeWeights([X|Xs], R) :- 
-	maplist(isNegative, [X|Xs], R),
-	maplist(calculateNotZeros, [X|Xs], [X|Xs], R),
-	maplist(roundValues, [X|Xs], R).
+normalizeWeights(Weights, R) :- 
+	maplist(isNegative, Weights, Non_Negatives),
+	foldl(add, Non_Negatives, 0, List_Sum),
+	maplist(divideBy(List_Sum), Non_Negatives, Divided_Weights),
+	maplist(roundValues, Divided_Weights, R).
 
-isNegative(Value, Result) :-
-	(Value =< 0 -> Result is 0; Result is Value).
+isNegative(Value, R) :-
+	(Value =< 0 -> R is 0; R is Value).
 
-calculateNotZeros(Value, [X|Xs], Result) :-
-	(Value > 0 -> Result is (Value / foldl(add, [X|Xs], 0, Result)); Result is Value).
+divideBy(A, B, R) :-
+	R is B / A.
 
-add(A, B, C) :-
-	C is A + B.
+add(A, B, R) :-
+	R is A + B.
 
-roundValues(Value, Result) :-
-	Result is round(Value * 100) / 100.
+roundValues(Value, R) :-
+	R is round(Value * 100) / 100.
 
-
-
-division(Value, [X|Xs], Result) :-
-	Result is Value / foldl(add, [X|Xs], 0, Result).
