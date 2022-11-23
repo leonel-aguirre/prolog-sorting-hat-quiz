@@ -1,102 +1,93 @@
-import * as pl from "tau-prolog"
-import { useEffect } from "react"
-
 import { useSession, useSessionDispatch } from "../Context/SessionProvider"
-import { SET_SESSION } from "../constants"
-import KnowledgeBase from "./knowledgeBase.pl"
 
-export const useProlog = () => {
+const useProlog = () => {
   const { session } = useSession()
   const dispatch = useSessionDispatch()
-
-  // Sets the session object.
-  useEffect(() => {
-    if (!session) {
-      dispatch({
-        type: SET_SESSION,
-        data: pl.create(),
-      })
-    }
-  }, [session, dispatch])
-
-  // Makes a consult based on the KnowledgeBase file.
-  const getLoadedSession = async () => {
-    if (session) {
-      return new Promise((resolve, reject) => {
-        session.consult(KnowledgeBase, {
-          success: () => {
-            /* Program loaded correctly */
-            resolve(session)
-          },
-          error: (error) => {
-            /* Error parsing program */
-            reject(error)
-          },
-        })
-      })
-    }
-  }
 
   /**
    * Performs a query against the current session.
    *
-   * @param {String} string The string containing the query to be executed.
-   * @returns A result based on the given query.
+   * @param {String} queryString The string containing the query to be made.
+   * @param {Function} callback A callback executed once the query is made.
    */
-  const query = async (string) => {
-    const loadedSession = await getLoadedSession()
+  const query = (queryString, callback) => {
+    if (session) {
+      session.query(queryString, {
+        success: () => {
+          session.answer({
+            success: (answer) => {
+              const formattedAnswer = session.format_answer(answer)
 
-    if (loadedSession) {
-      return new Promise((resolve, reject) => {
-        loadedSession.query(string, {
-          success: () => {
-            loadedSession.answer({
-              success: (answer) => {
-                /* Answer */
-                resolve(answer?.links)
-              },
-              error: (error) => {
-                /* Uncaught error */
-                reject(error)
-              },
-              fail: () => {
-                /* Fail */
-                // TODO: Figure out how to handle this case.
-                reject("FAIL")
-              },
-              limit: () => {
-                /* Limit exceeded */
-                // TODO: Figure out how to handle this case.
-                reject("LIMIT")
-              },
-            })
-          },
-          error: (error) => {
-            reject(error)
-          },
-        })
+              callback?.(formattedAnswer)
+            },
+            error: (error) => {
+              throw Error(`Error: ${error}`)
+            },
+            fail: (error) => {
+              throw Error(`Error: ${error}`)
+            },
+            limit: () => {
+              throw Error("Error: Limit")
+            },
+          })
+        },
+        error: (error) => {
+          throw Error(`Error: ${error}`)
+        },
       })
     }
   }
 
-  // TODO: Fix issue with strings containing ".".
   /**
-   * Normalizes the shape of the result of a query, this may be used with query
-   * results that are expected to return a string, these are represented as lists
-   * in prolog, so they must be normalized.
+   * Retracts the fact that matches the current value of the persistance variable
+   * and then creates a new instance of it with the updated value in the knowledge base.
+   * At the end the value is updated in the store by updateStoreValueFromKnowledgeBase.
    *
-   * @param {String} input The data to be normalized.
-   * @returns A string containing the normalized output.
+   * @param {String} name The name of the persistance variable.
+   * @param {String} currentValue The current value of the persistance variable.
+   * @param {String} newValue The new value to be assigned to the persistance variable.
+   * @param {String} actionType The type identifier of the action to be performed to update the store.
+   * @param {Function} callback A callback that is executed after the variable update.
    */
-  const normalizeString = (input) => {
-    const normalize = (e) =>
-      e.id === "." || e.id === "[]" ? e.args.map(normalize) : e.id
+  const updatePersistanceVariable = (
+    name,
+    currentValue,
+    newValue,
+    actionType,
+    callback
+  ) => {
+    query(`retract(persistance_variable(${name}, ${currentValue})).`, () => {
+      query(`assertz(persistance_variable(${name}, ${newValue})).`, () => {
+        updateStoreValueFromKnowledgeBase(name, actionType)
+        callback?.()
+      })
+    })
+  }
 
-    return input?.args.map(normalize).flat(Infinity).join("")
+  /**
+   * Queries the value of the persistance variable from the knowledge base and
+   * sets it into the store.
+   *
+   * @param {String} name The name of the persistance variable form the knowledge base.
+   * @param {String} actionType The type identifier of the action to be performed to update the store.
+   */
+  const updateStoreValueFromKnowledgeBase = (name, actionType) => {
+    query(`persistance_variable(${name}, R).`, (result) => {
+      const formattedResult = result.replace("R = ", "")
+
+      dispatch({
+        type: actionType,
+        data: formattedResult,
+      })
+    })
   }
 
   return {
+    session,
     query,
-    normalizeString,
+    updatePersistanceVariable,
+    updateStoreValueFromKnowledgeBase,
   }
 }
+
+export default useProlog

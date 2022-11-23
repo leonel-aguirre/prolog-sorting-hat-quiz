@@ -1,3 +1,6 @@
+:- use_module(library(lists)).
+:- use_module(library(random)).
+
 % Data collected from: https://www.reddit.com/r/Pottermore/comments/44os14/pottermore_sorting_hat_quiz_analysis/.
 
 % 1. Each quiz consists of 8 questions.
@@ -23,31 +26,48 @@
 % 6. There are 3⋅1⋅3⋅3⋅4⋅5⋅6⋅3 = 9720 quiz combinations 
 %   and 6⋅15⋅17⋅20⋅16⋅20⋅24⋅6 = 1410048000 possible sortings.
 
+% ✅💾 Facts 💾✅ +++
+
+% c1
 question(q1, "Dawn or dusk?").
 question(q2, "Forest or river?").
 question(q3, "Moon or stars?").
+
+% c2
 question(q4, "Which of the following would you most hate people to call you?").
 question(q5, "After you have died, what would you most like people to do when they hear your name?").
 question(q6, "How would you like to be known to history?").
 question(q7, "Given the choice, would you rather invent a potion that would guarantee you:").
-question(q8, "Once every century, the Flutterby bush produces flowers that adapt their scent to attract the unwary.  If it lured you, it would smell of:").
-question(q9, "Four goblets are placed before you.  Which would you choose to drink?").
+
+% c3
+question(q8, "Once every century, the Flutterby bush produces flowers that adapt their scent to attract the unwary. If it lured you, it would smell of:").
+question(q9, "Four goblets are placed before you. Which would you choose to drink?").
 question(q10, "What kind of instrument most pleases your ear?").
-question(q11, "You enter an enchanted garden.  What would you be most curious to examine first?").
+question(q11, "You enter an enchanted garden. What would you be most curious to examine first?").
 question(q12, "Four boxes are placed before you. Which would you try and open?").
-question(q13, "A troll has gone beserk in the Headmaster's study at Hogwarts.  It is about to smash, crush and tear several irreplaceable items and treasures. In which order would you rescue these objects from the troll's club, if you could?").
+
+% c4
+question(q13, "A troll has gone beserk in the Headmaster's study at Hogwarts. It is about to smash, crush and tear several irreplaceable items and treasures. In which order would you rescue these objects from the troll's club, if you could?").
 question(q14, "Which of the following do you find most difficult to deal with?").
 question(q15, "Which would you rather be:").
+
+% c5
 question(q16, "If you could have any power, which would you choose?").
 question(q17, "What are you most looking forward to learning at Hogwarts?").
 question(q18, "Which of the following would you most like to study?").
-question(q19, "You and two friends need to cross a bridge guarded by a river troll who insists on fighting one of you before he will let all of you pass.  Do you:").
-question(q20, "One of your house mates has cheated in a Hogwarts exam by using a Self-Spelling Quill. Now he has come top of the class in Charms, beating you into second place. Professor Flitwick is suspicious of what happened.  He draws you to one side after his lesson and asks you whether or not your classmate used a forbidden quill.  What do you do?").
-question(q21, "A Muggle confronts you and says that they are sure you are a witch or wizard.  Do you:").
+
+% c6
+question(q19, "You and two friends need to cross a bridge guarded by a river troll who insists on fighting one of you before he will let all of you pass. Do you:").
+question(q20, "One of your house mates has cheated in a Hogwarts exam by using a Self-Spelling Quill. Now he has come top of the class in Charms, beating you into second place. Professor Flitwick is suspicious of what happened. He draws you to one side after his lesson and asks you whether or not your classmate used a forbidden quill. What do you do?").
+question(q21, "A Muggle confronts you and says that they are sure you are a witch or wizard. Do you:").
 question(q22, "Which nightmare would frighten you most?").
 question(q23, "Which road tempts you most?").
-question(q24, "Late at night, walking alone down the street, you hear a peculiar cry that you believe to have a magical source.  Do you:").
+question(q24, "Late at night, walking alone down the street, you hear a peculiar cry that you believe to have a magical source. Do you:").
+
+% c7
 question(q25, "If you were attending Hogwarts, which pet would you choose to take with you?").
+
+% c8
 question(q26, "Black or white?").
 question(q27, "Heads or tails?").
 question(q28, "Left or right?").
@@ -302,7 +322,6 @@ weights(o122, [30.63227296, -23.60407631, -31.08418312, 25.892524]).
 weights(o123, [-27.37364476, 28.45701138, -23.55695615, 25.02450925]).
 weights(o124, [27.02941592, -27.55102988, 25.78541162, -23.44987827]).
 
-
 question_options(q1, [o1, o2]).
 question_options(q2, [o3, o4]).
 question_options(q3, [o5, o6]).
@@ -334,8 +353,8 @@ question_options(q28, [o123, o124]).
 
 questions_category(c1, [q1, q2, q3]).
 questions_category(c2, [q4, q5, q6, q7]).
-questions_category(c3, [q9, q10, q24, q11, q12, q8]).
-questions_category(c4, [q14, q13, q19, q9, q12, q15, q16]).
+questions_category(c3, [q8, q9, q10, q11, q12]).
+questions_category(c4, [q13, q14, q15]).
 questions_category(c5, [q16, q17, q18]).
 questions_category(c6, [q19, q20, q21, q22, q23, q24]).
 questions_category(c7, [q25]).
@@ -346,9 +365,35 @@ house("Hufflepuff").
 house("Ravenclaw").
 house("Slytherin").
 
+% ✅💾 Facts 💾✅ ---
 
 
-% 📏😸 Rules Start Here 😸📏
+% 🛑💾 Data Persistance 💾🛑 +++
+
+:- dynamic(persistance_variable/2).
+
+% Initial values.
+persistance_variable(currentCategoryIndex, 0). 
+persistance_variable(categoryConfigurationList, [1, 2, 3, 4, 5, 6, 7, 8]).
+persistance_variable(currentQuestionID, q1).
+
+% 🛑💾 Data Persistance 💾🛑 ---
+
+
+% 📏😸 Rules Start Here 😸📏 +++
+
+% Creates a list with numbers from 1 to 8 placed randomly except for 
+% 1 and 8 being each one at the first and end of the list respectively.
+create_category_order_list(L) :- 
+  random_permutation([2, 3, 4, 5, 6, 7], Two_Through_Seven),
+  append([1], Two_Through_Seven, One_Through_Seven),
+  append(One_Through_Seven, [8], L).
+
+% Retrieves a random question id element from the categories list tied 
+% to the given category id.
+random_question_id_from_category(C, Q) :-
+  questions_category(C, Q_List),
+  random_member(Q, Q_List).
 
 normalizeWeights(Weights, R) :- 
 	maplist(isNegative, Weights, Non_Negatives),
@@ -368,3 +413,4 @@ add(A, B, R) :-
 roundValues(Value, R) :-
 	R is round(Value * 100) / 100.
 
+% 📏😸 Rules Start Here 😸📏 ---

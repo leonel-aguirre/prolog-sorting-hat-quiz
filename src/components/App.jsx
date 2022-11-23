@@ -1,26 +1,46 @@
 import "./App.scss"
 
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+
 import { SessionProvider } from "../Context/SessionProvider"
-import Question from "./PrologTests/Question"
-import Option from "./PrologTests/Option"
+import PrologSessionWrapper from "../Context/PrologSessionWrapper"
+import Sandbox from "./PrologTestComponents/SandBox"
+import Home from "./Home/Home"
+import Quiz from "./Quiz/Quiz"
+import Results from "./Results/Results"
+import History from "./History/History"
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/quiz",
+    element: <Quiz />,
+  },
+  {
+    path: "/history",
+    element: <History />,
+  },
+  {
+    path: "/results",
+    element: <Results />,
+  },
+  {
+    path: "/sandbox",
+    element: <Sandbox />,
+  },
+])
 
 const App = () => {
   return (
     <SessionProvider>
-      <div className="app">
-        <h1 className="app__text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et veritatis
-          eos id minima est. Nisi vitae dignissimos voluptatum atque autem?
-          Distinctio eligendi quasi possimus, totam sit dolore laborum at.
-          Atque!
-        </h1>
-
-        <div className="app__prolog-test-container">
-          <Question questionID={"q1"} />
-          <Option optionID={"o1"} />
-          <Option optionID={"o2"} />
+      <PrologSessionWrapper>
+        <div className="app">
+          <RouterProvider router={router} />
         </div>
-      </div>
+      </PrologSessionWrapper>
     </SessionProvider>
   )
 }

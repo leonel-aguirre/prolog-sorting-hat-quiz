@@ -8,8 +8,6 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Knowledge base.
 
-- [x] 🟡 Define facts for categories and relate them with their corresponding questions. Example: `questions_category(c1, [q1, q2, q3])` or `question_category(c1, q1)` or any other approach that accomplishes the future goals.
-- [x] 🟡 Define facts for the four possible hogwarts houses. Example: `house(gryffindor), house(ravenclaw) ...`.
 - [ ] 🟡 Define the `normalize_weights` rule in the knowledge base for transforming a given weight (using its option identifier) into a value that is easier to handle and understand for the web app. Working implementation in javascript:
 
   ```js
@@ -44,14 +42,19 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
   */
   ```
 
-- [ ] 🟢 Create a rule that builds up a list for the user's quiz session question categories configuration, it must contain numbers from 1 to 8 having the value 1 always at the first place and 8 at the last place, in between the remaining numbers (2 to 7), must be arranged randomly. Example: `[1, 4, 7, 2, 6, 3, 5, 8]`, `[1, 7, 5, 4, 2, 6, 3, 8]`.
-- [ ] 🟢 Update `README.md` file with latest project information.
-
-- [ ] 🚧 (WIP) Implement a strategy using `asserta` and `assertz` (or any other approach) for managing and storing the results of a completed quiz. Example: when answering the quiz the user goes through multiple categories of questions (8 in total), a fact must take care of the progress of the user which must be updated during the process, something like `current_question_index(3)`, `category_configuration_list([1, 6, 5, 2, 7, 3, 4, 8])`, `current_question_id(q21)` (any other approach that works should be fine).
-
 #### Web App.
 
-**😸 List is currently empty 😸**
+- [ ] 🟡 Implement the results page UI with minimal functionality, it must calculate the users results and give it the chance to log them into the history.
+- [ ] 🟢 Connect app with firebase, the goal is to store and load the history from there.
+- [ ] 🟢 Implement the functionality of the History page, it must only load the records from firebase and show them to the user.
+- [ ] 🟢 Implement the styling for the Quiz page.
+- [ ] 🟢 Implement the styling for the Results page.
+- [ ] 🟢 Implement the styling for the History page.
+
+#### General.
+
+- [ ] 🟢 Update `README.md` file with latest project information, it must contain how to run the project from start to finish.
+- [ ] 🟢 Deploy the site into GitHub pages.
 
 ### Completed tasks:
 
@@ -62,6 +65,29 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
   - [x] Add a set of `question_option` facts that relates each question id with its corresponding set of option ids in a list. Example: `question_option(q1, [o1, o2, o3, o4])`.
 - [x] Initialize and config React app with bare minimum needs for it to work.
 - [x] Test the **[Tau Prolog JavaScript Library](http://tau-prolog.org/)** and determine if it is the best tool for the project.
+- [x] Define facts for categories and relate them with their corresponding questions. Example: `questions_category(c1, [q1, q2, q3])` or `question_category(c1, q1)` or any other approach that accomplishes the future goals.
+- [x] Create a rule that builds up a list for the user's quiz session question categories configuration, it must contain numbers from 1 to 8 having the value 1 always at the first place and 8 at the last place, in between the remaining numbers (2 to 7), must be arranged randomly. Example: `[1, 4, 7, 2, 6, 3, 5, 8]`, `[1, 7, 5, 4, 2, 6, 3, 8]`.
+- [x] Implement a strategy using `asserta`, `assertz` and `retract` (or any other approach) for managing and storing the results of a completed quiz. Example: when answering the quiz the user goes through multiple categories of questions (8 in total), a fact must take care of the progress of the user which must be updated during the process, something like `persistance_variable(currentCategoryIndex, 3)`, `persistance_variable(categoryConfigurationList, [1, 6, 5, 2, 7, 3, 4, 8])`, `persistance_variable(currentQuestionID, q21)` (any other approach that works should be fine).
+- [x] Declare sass font style rules and expose them through the `_typography.scss` file. Include the **Open Sans** font into the App.
+- [x] Add scss rules for breakpoints and expose them through the `_breakpoints.scss` file.
+- [x] Add sass rules for spacing under the `_spacing.scss` file and expose them.
+- [x] Implement the homepage of the site, at this point the app might need the integration of react router, the homepage should be accessible in the route `/`.
+- [x] Implement the procedure `random_question_id_from_category/2` which must retrieve a question id randomly from the given category. Example:
+
+  ```pl
+  random_question_id_from_category(c3, R).
+  % R = q11.
+
+  random_question_id_from_category(c3, R).
+  % R = q8.
+
+  random_question_id_from_category(c6, R).
+  % R = q20.
+  ```
+
+- [x] Implement the quiz page UI with minimal functionality, at this point it is possible to retrieve data from the knowledge base and simulate the flow of going through the 8 questions of the quiz, using the category configuration list.
+- [x] Define facts for categories and relate them with their corresponding questions. Example: `questions_category(c1, [q1, q2, q3])` or `question_category(c1, q1)` or any other approach that accomplishes the future goals.
+- [x] Define facts for the four possible hogwarts houses. Example: `house(gryffindor), house(ravenclaw) ...` (Modified to just one list with the four houses).
 
 ### Priority order:
 
