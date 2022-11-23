@@ -26,6 +26,8 @@
 % 6. There are 3⋅1⋅3⋅3⋅4⋅5⋅6⋅3 = 9720 quiz combinations 
 %   and 6⋅15⋅17⋅20⋅16⋅20⋅24⋅6 = 1410048000 possible sortings.
 
+% ✅💾 Facts 💾✅ +++
+
 question(q1, "Dawn or dusk?").
 question(q2, "Forest or river?").
 question(q3, "Moon or stars?").
@@ -343,6 +345,8 @@ questions_category(c6, [q19, q20, q21, q22, q23, q24]).
 questions_category(c7, [q25]).
 questions_category(c8, [q26, q27, q28]).
 
+% ✅💾 Facts 💾✅ ---
+
 
 % 🛑💾 Data Persistance 💾🛑 +++
 
@@ -364,5 +368,11 @@ create_category_order_list(L) :-
   random_permutation([2, 3, 4, 5, 6, 7], Two_Through_Seven),
   append([1], Two_Through_Seven, One_Through_Seven),
   append(One_Through_Seven, [8], L).
+
+% Retrieves a random question id element from the categories list tied 
+% to the given category id.
+random_question_id_from_category(C, Q) :-
+  questions_category(C, Q_List),
+  random_member(Q, Q_List).
 
 % 📏😸 Rules Start Here 😸📏 ---
