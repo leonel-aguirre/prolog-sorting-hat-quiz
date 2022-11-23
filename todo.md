@@ -43,19 +43,6 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
   */
   ```
 
-- [ ] 🟢 Implement the procedure `random_question_id_from_category/2` which must retrieve a question id randomly from the given category. Example:
-
-  ```pl
-  random_question_id_from_category(c3, R).
-  % R = q11.
-
-  random_question_id_from_category(c3, R).
-  % R = q8.
-
-  random_question_id_from_category(c6, R).
-  % R = q20.
-  ```
-
 - [ ] 🟢 Update `README.md` file with latest project information.
 
 #### Web App.
@@ -78,6 +65,18 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 - [x] Add scss rules for breakpoints and expose them through the `_breakpoints.scss` file.
 - [x] Add sass rules for spacing under the `_spacing.scss` file and expose them.
 - [x] Implement the homepage of the site, at this point the app might need the integration of react router, the homepage should be accessible in the route `/`.
+- [x] Implement the procedure `random_question_id_from_category/2` which must retrieve a question id randomly from the given category. Example:
+
+  ```pl
+  random_question_id_from_category(c3, R).
+  % R = q11.
+
+  random_question_id_from_category(c3, R).
+  % R = q8.
+
+  random_question_id_from_category(c6, R).
+  % R = q20.
+  ```
 
 ### Priority order:
 
