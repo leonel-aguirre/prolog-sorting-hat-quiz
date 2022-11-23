@@ -43,11 +43,19 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
   */
   ```
 
-- [ ] 🟢 Update `README.md` file with latest project information.
-
 #### Web App.
 
-- [ ] 🟢 Implement the quiz page UI with minimal functionality, at this point it is possible to retrieve data from the knowledge base and simulate the flow of going through the 8 questions of the quiz, using the category configuration list.
+- [ ] 🟡 Implement the results page UI with minimal functionality, it must calculate the users results and give it the chance to log them into the history.
+- [ ] 🟢 Connect app with firebase, the goal is to store and load the history from there.
+- [ ] 🟢 Implement the functionality of the History page, it must only load the records from firebase and show them to the user.
+- [ ] 🟢 Implement the styling for the Quiz page.
+- [ ] 🟢 Implement the styling for the Results page.
+- [ ] 🟢 Implement the styling for the History page.
+
+#### General.
+
+- [ ] 🟢 Update `README.md` file with latest project information, it must contain how to run the project from start to finish.
+- [ ] 🟢 Deploy the site into GitHub pages.
 
 ### Completed tasks:
 
@@ -77,6 +85,8 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
   random_question_id_from_category(c6, R).
   % R = q20.
   ```
+
+- [x] Implement the quiz page UI with minimal functionality, at this point it is possible to retrieve data from the knowledge base and simulate the flow of going through the 8 questions of the quiz, using the category configuration list.
 
 ### Priority order:
 
