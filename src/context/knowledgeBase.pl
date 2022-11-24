@@ -421,7 +421,7 @@ round_two_decimals(Value, R) :-
 
 % Returns the normalized weights list tied to the given option ID.
 get_option_id_normalized_weights(O_ID, R) :-
-	weigths(O_ID, Raw_Weights),
+	weights(O_ID, Raw_Weights),
 	normalize_weights(Raw_Weights, R).
 
 % 📏😸 Rules Start Here 😸📏 ---
