@@ -12,10 +12,8 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Web App.
 
-- [ ] 🟡 Implement the results page UI with minimal functionality, it must calculate the users results and give it the chance to log them into the history.
 - [ ] 🟡 Connect app with firebase, the goal is to store and load the history from there.
 - [ ] 🟡 Implement the functionality of the History page, it must only load the records from firebase and show them to the user.
-- [ ] 🟢 Implement the styling for the Quiz page.
 - [ ] 🟢 Implement the styling for the Results page.
 - [ ] 🟢 Implement the styling for the History page.
 
@@ -108,6 +106,9 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
   ```
 
   **Note:** Use the already existing `houses` fact to retrieve the resulting string, the index of the highest value will match the winning house.
+
+  - [x] Implement the results page UI with minimal functionality, it must calculate the users results and give it the chance to log them into the history.
+  - [x] Implement the styling for the Quiz page.
 
 ### Priority order:
 
