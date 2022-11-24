@@ -1,11 +1,9 @@
 @use "../../sass/index" as *;
 
 .home {
-  $background-color: $color-black;
   $red-gradient: monochrome-gradient($color-red, 45deg);
   $blue-gradient: monochrome-gradient($color-blue, 45deg);
 
-  background: $background-color;
   width: 100vw;
   height: 100vh;
   color: white;
