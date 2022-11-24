@@ -373,6 +373,7 @@ houses(["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]).
 persistance_variable(currentCategoryIndex, 0). 
 persistance_variable(categoryConfigurationList, [1, 2, 3, 4, 5, 6, 7, 8]).
 persistance_variable(currentQuestionID, q1).
+persistance_variable(currentScore, [0, 0, 0, 0]).
 
 % 🛑💾 Data Persistance 💾🛑 ---
 
@@ -417,5 +418,10 @@ add(A, B, R) :-
 % Rounds the given value to two decimal places.
 roundTwoDecimals(Value, R) :-
 	R is round(Value * 100) / 100.
+
+% Returns the normalized weights list tied to the given option ID.
+getNormalizedWeights(O_ID, R) :-
+	weigths(O_ID, Raw_Weights),
+	normalizeWeights(Raw_Weights, R).
 
 % 📏😸 Rules Start Here 😸📏 ---
