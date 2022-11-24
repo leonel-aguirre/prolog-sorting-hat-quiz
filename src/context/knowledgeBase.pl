@@ -396,19 +396,19 @@ random_question_id_from_category(C, Q) :-
 % Normalizes the given list of weights, negatives are excluded and 
 % remaining numbers are divided by the sum of the list and then rounded 
 % to two decimal places.
-normalizeWeights(Weights, R) :- 
-	maplist(noNegative, Weights, Non_Negatives),
+normalize_weights(Weights, R) :- 
+	maplist(no_negative, Weights, Non_Negatives),
 	foldl(add, Non_Negatives, 0, List_Sum),
-	maplist(divideBy(List_Sum), Non_Negatives, Divided_Weights),
-	maplist(roundTwoDecimals, Divided_Weights, R).
+	maplist(divide_by(List_Sum), Non_Negatives, Divided_Weights),
+	maplist(round_two_decimals, Divided_Weights, R).
 
 % Returns 0 if the given value is negative of 0, if not the 
 % value remains the same.
-noNegative(Value, R) :-
+no_negative(Value, R) :-
 	(Value =< 0 -> R is 0; R is Value).
 
 % Divides the two given numbers. Note that A is always the denominator.
-divideBy(A, B, R) :-
+divide_by(A, B, R) :-
 	R is B / A.
 
 % Sums the two given numbers.
@@ -416,12 +416,12 @@ add(A, B, R) :-
 	R is A + B.
 
 % Rounds the given value to two decimal places.
-roundTwoDecimals(Value, R) :-
+round_two_decimals(Value, R) :-
 	R is round(Value * 100) / 100.
 
 % Returns the normalized weights list tied to the given option ID.
-getNormalizedWeights(O_ID, R) :-
+get_option_id_normalized_weights(O_ID, R) :-
 	weigths(O_ID, Raw_Weights),
-	normalizeWeights(Raw_Weights, R).
+	normalize_weights(Raw_Weights, R).
 
 % 📏😸 Rules Start Here 😸📏 ---
