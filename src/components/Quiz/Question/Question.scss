@@ -1,0 +1,37 @@
+@use "../../../sass/index" as *;
+
+.question {
+  $question-container-background-color: darken-1($color-black);
+  $options-container-background-color: darken-4($color-purple);
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint-min(bp(small)) {
+    flex-direction: row;
+  }
+
+  &__question-container {
+    background-color: $question-container-background-color;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__question-text {
+    @extend %h3-sans;
+
+    margin: 0 $space-5;
+    text-align: center;
+  }
+
+  &__options-container {
+    background-color: $options-container-background-color;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

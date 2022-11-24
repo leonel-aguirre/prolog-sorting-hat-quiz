@@ -1,3 +1,5 @@
+import "./Quiz.scss"
+
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -17,6 +19,9 @@ const Quiz = () => {
   const navigate = useNavigate()
 
   const { query, updatePersistanceVariable } = useProlog()
+
+  // TODO: Remove when no longer needed.
+  const shouldShowDebugInformation = false
 
   const {
     categoryConfigurationList,
@@ -113,22 +118,26 @@ const Quiz = () => {
 
   return (
     <div className="quiz">
-      <pre>
-        <code>
-          {JSON.stringify(
-            {
-              categoryConfigurationList: JSON.parse(categoryConfigurationList),
-              currentScore: JSON.parse(currentScore),
-              currentCategoryIndex,
-              currentQuestionID,
-            },
-            null,
-            2
-          )}
-        </code>
-      </pre>
+      {shouldShowDebugInformation && (
+        <pre>
+          <code>
+            {JSON.stringify(
+              {
+                categoryConfigurationList: JSON.parse(
+                  categoryConfigurationList
+                ),
+                currentScore: JSON.parse(currentScore),
+                currentCategoryIndex,
+                currentQuestionID,
+              },
+              null,
+              2
+            )}
+          </code>
+        </pre>
+      )}
       {isLoading ? (
-        <h1>Loading...</h1>
+        <h1 className="quiz__loader">Loading ...</h1>
       ) : (
         <Question question={currentQuestion} optionIDs={currentOptionsIDS} />
       )}

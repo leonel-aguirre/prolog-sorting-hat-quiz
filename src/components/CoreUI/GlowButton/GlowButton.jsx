@@ -1,8 +1,16 @@
 import "./GlowButton.scss"
 
-const GlowButton = ({ children, onClick, color = "purple" }) => {
+const GlowButton = ({
+  children,
+  onClick,
+  color = "purple",
+  isSmall = false,
+}) => {
   return (
-    <button className={`glow-button is-${color}`} onClick={onClick}>
+    <button
+      className={`glow-button is-${color} is-${isSmall ? "small" : "large"}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   )
