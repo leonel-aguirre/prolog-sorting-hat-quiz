@@ -1,9 +1,9 @@
 @use "../sass/index" as *;
 
 .app {
-  background-color: $background-color;
+  $background-color: $color-black;
+  $text-color: $color-white;
 
-  &__text {
-    color: $text-color;
-  }
+  background: $background-color;
+  color: $color-white;
 }

@@ -1,0 +1,14 @@
+@use "../../sass/index" as *;
+
+.quiz {
+  height: 100vh;
+
+  &__loader {
+    @extend %h1-sans;
+
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
