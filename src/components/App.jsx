@@ -2,8 +2,8 @@ import "./App.scss"
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
-import { SessionProvider } from "../Context/SessionProvider"
-import PrologSessionWrapper from "../Context/PrologSessionWrapper"
+import { SessionProvider } from "../context/SessionProvider"
+import PrologSessionWrapper from "../context/PrologSessionWrapper"
 import Sandbox from "./PrologTestComponents/SandBox"
 import Home from "./Home/Home"
 import Quiz from "./Quiz/Quiz"

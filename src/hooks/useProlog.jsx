@@ -1,4 +1,4 @@
-import { useSession, useSessionDispatch } from "../Context/SessionProvider"
+import { useSession, useSessionDispatch } from "../context/SessionProvider"
 
 const useProlog = () => {
   const { session } = useSession()

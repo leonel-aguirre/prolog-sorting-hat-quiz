@@ -6,7 +6,7 @@ import {
   SET_CURRENT_CATEGORY_INDEX,
   SET_CURRENT_QUESTION_ID,
 } from "../../constants"
-import { useSession } from "../../Context/SessionProvider"
+import { useSession } from "../../context/SessionProvider"
 import useProlog from "../../hooks/useProlog"
 import Question from "./Question/Question"
 
@@ -18,8 +18,12 @@ const Quiz = () => {
 
   const { query, updatePersistanceVariable } = useProlog()
 
-  const { categoryConfigurationList, currentCategoryIndex, currentQuestionID } =
-    useSession()
+  const {
+    categoryConfigurationList,
+    currentCategoryIndex,
+    currentQuestionID,
+    currentScore,
+  } = useSession()
 
   useEffect(() => {
     if (currentCategoryIndex > 7) {
@@ -114,6 +118,7 @@ const Quiz = () => {
           {JSON.stringify(
             {
               categoryConfigurationList: JSON.parse(categoryConfigurationList),
+              currentScore: JSON.parse(currentScore),
               currentCategoryIndex,
               currentQuestionID,
             },
