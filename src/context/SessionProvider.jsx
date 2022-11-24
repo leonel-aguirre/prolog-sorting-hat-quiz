@@ -5,6 +5,7 @@ import {
   SET_CURRENT_CATEGORY_INDEX,
   SET_CATEGORY_CONFIGURATION_LIST,
   SET_CURRENT_QUESTION_ID,
+  SET_CURRENT_SCORE,
 } from "../constants"
 
 const SessionContext = createContext(null)
@@ -15,6 +16,7 @@ const initialState = {
   currentCategoryIndex: 0,
   categoryConfigurationList: "[1,2,3,4,5,6,7,8]",
   currentQuestionID: "q1",
+  currentScore: "[0,0,0,0]",
 }
 
 export const SessionProvider = ({ children }) => {
@@ -61,6 +63,12 @@ export const sessionReducer = (state, action) => {
       return {
         ...state,
         currentQuestionID: action.data,
+      }
+    }
+    case SET_CURRENT_SCORE: {
+      return {
+        ...state,
+        currentScore: action.data,
       }
     }
     default: {
