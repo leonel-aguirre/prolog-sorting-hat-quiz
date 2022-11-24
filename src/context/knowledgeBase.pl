@@ -360,7 +360,7 @@ questions_category(c6, [q19, q20, q21, q22, q23, q24]).
 questions_category(c7, [q25]).
 questions_category(c8, [q26, q27, q28]).
 
-houses(["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]).
+houses(["Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin"]).
 
 % ✅💾 Facts 💾✅ ---
 
@@ -378,7 +378,7 @@ persistance_variable(currentScore, [0, 0, 0, 0]).
 % 🛑💾 Data Persistance 💾🛑 ---
 
 
-% 📏😸 Rules Start Here 😸📏 +++
+% 📏😸 Rules 😸📏 +++
 
 % Creates a list with numbers from 1 to 8 placed randomly except for 
 % 1 and 8 being each one at the first and end of the list respectively.
@@ -424,4 +424,19 @@ get_option_id_normalized_weights(O_ID, R) :-
 	weights(O_ID, Raw_Weights),
 	normalize_weights(Raw_Weights, R).
 
-% 📏😸 Rules Start Here 😸📏 ---
+% Returns the matching house matching the index of the highest
+% value in the given list of scores.
+determine_house(Scores, H) :-
+	max_list(Scores, Max_Score),
+	index_of(Scores, Max_Score, Max_Score_Index),
+	houses(Houses),
+	nth0(Max_Score_Index, Houses, H).
+
+% Returns the index of an element inside a list.
+index_of([X|_], X, 0).
+index_of([_|XS], Element, Index):-
+  index_of(XS, Element, IndexP1),
+  Index is IndexP1 + 1.
+
+
+% 📏😸 Rules 😸📏 ---
