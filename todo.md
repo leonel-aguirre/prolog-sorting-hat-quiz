@@ -8,23 +8,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Knowledge base.
 
-- [ ] 🟡 Create a procedure that determines which house to return based on the results array. The results array will be the sum of the weights from the options the user selected for all the questions during the quiz, so it will be of the following shape: `[0.75, 0.15, 0.1, 0.1]`. Example:
-
-  ```pl
-  determine_house([0.75, 0.15, 0.1, 0.1], R).
-  % R = "Gryffindor".
-
-  determine_house([0.15, 0.75, 0.1, 0.1], R).
-  % R = "Ravenclaw".
-
-  determine_house([0.1, 0.1, 0.75, 0.15], R).
-  % R = "Hufflepuff".
-
-  determine_house([0.1, 0.1, 0.15, 0.75], R).
-  % R = "Slytherin".
-  ```
-
-  **Note:** Use the already existing `houses` fact retrieve the resulting string, the index of the highest value will match the winning house.
+😸✅ List is currently Empty ✅😸
 
 #### Web App.
 
@@ -106,6 +90,24 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
   ]
   */
   ```
+
+  - [x] Create a procedure that determines which house to return based on the results array. The results array will be the sum of the weights from the options the user selected for all the questions during the quiz, so it will be of the following shape: `[0.75, 0.15, 0.1, 0.1]`. Example:
+
+  ```pl
+  determine_house([0.75, 0.15, 0.1, 0.1], R).
+  % R = "Gryffindor".
+
+  determine_house([0.15, 0.75, 0.1, 0.1], R).
+  % R = "Ravenclaw".
+
+  determine_house([0.1, 0.1, 0.75, 0.15], R).
+  % R = "Hufflepuff".
+
+  determine_house([0.1, 0.1, 0.15, 0.75], R).
+  % R = "Slytherin".
+  ```
+
+  **Note:** Use the already existing `houses` fact to retrieve the resulting string, the index of the highest value will match the winning house.
 
 ### Priority order:
 
