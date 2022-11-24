@@ -51,15 +51,23 @@
   }
 
   &__previous-option-button {
-    margin-left: $space-4;
+    margin-left: $space-1;
     margin-right: auto;
-    animation: float-left 6s ease-in-out infinite;
+    animation: float-right 6s ease-in-out infinite;
+
+    @include breakpoint-min(bp(small)) {
+      margin-right: $space-4;
+    }
   }
 
   &__next-option-button {
-    margin-right: $space-4;
+    margin-right: $space-1;
     margin-left: auto;
-    animation: float-right 6s ease-in-out infinite;
+    animation: float-left 6s ease-in-out infinite;
+
+    @include breakpoint-min(bp(small)) {
+      margin-right: $space-4;
+    }
   }
 
   @keyframes float-left {
@@ -67,7 +75,7 @@
       transform: translatex(0px);
     }
     50% {
-      transform: translatex(-20px);
+      transform: translatex(-10px);
     }
     100% {
       transform: translatex(0px);
@@ -79,7 +87,7 @@
       transform: translatex(0px);
     }
     50% {
-      transform: translatex(20px);
+      transform: translatex(10px);
     }
     100% {
       transform: translatex(0px);
