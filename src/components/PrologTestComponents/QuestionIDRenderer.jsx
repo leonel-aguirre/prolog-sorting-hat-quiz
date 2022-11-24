@@ -1,4 +1,4 @@
-import { useSession } from "../../Context/SessionProvider"
+import { useSession } from "../../context/SessionProvider"
 
 const QuestionIDRenderer = ({ instanceID }) => {
   const { currentQuestionID } = useSession()

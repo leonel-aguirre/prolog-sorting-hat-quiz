@@ -1,5 +1,5 @@
 import { SET_CURRENT_CATEGORY_INDEX } from "../../../constants"
-import { useSession } from "../../../Context/SessionProvider"
+import { useSession } from "../../../context/SessionProvider"
 import useProlog from "../../../hooks/useProlog"
 import Option from "./Option/Option"
 

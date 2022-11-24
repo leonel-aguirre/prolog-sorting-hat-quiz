@@ -6,7 +6,7 @@ import {
   SET_CURRENT_CATEGORY_INDEX,
   SET_CURRENT_QUESTION_ID,
 } from "../../constants"
-import { useSession } from "../../Context/SessionProvider"
+import { useSession } from "../../context/SessionProvider"
 import useProlog from "../../hooks/useProlog"
 import Question from "./Question/Question"
 

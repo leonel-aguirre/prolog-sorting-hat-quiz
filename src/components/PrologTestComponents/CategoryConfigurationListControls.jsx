@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 
 import { SET_CATEGORY_CONFIGURATION_LIST } from "../../constants"
-import { useSession, useSessionDispatch } from "../../Context/SessionProvider"
+import { useSession, useSessionDispatch } from "../../context/SessionProvider"
 import useProlog from "../../hooks/useProlog"
 
 const CategoryConfigurationListControls = () => {
