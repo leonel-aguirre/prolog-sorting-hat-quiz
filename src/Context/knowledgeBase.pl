@@ -418,4 +418,19 @@ add(A, B, R) :-
 roundTwoDecimals(Value, R) :-
 	R is round(Value * 100) / 100.
 
+% Returns the matching house matching the index of the highest
+% value in the given list of scores.
+determine_house(Scores, H) :-
+	max_list(Scores, Max_Score),
+	index_of(Scores, Max_Score, Max_Score_Index),
+	houses(Houses),
+	nth0(Max_Score_Index, Houses, H).
+
+% Returns the index of an element inside a list.
+index_of([X|_], X, 0).
+index_of([_|XS], Element, Index):-
+  index_of(XS, Element, IndexP1),
+  Index is IndexP1 + 1.
+
+
 % 📏😸 Rules 😸📏 ---
