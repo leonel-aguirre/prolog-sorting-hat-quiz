@@ -1,7 +1,10 @@
 import "./App.scss"
 
+import { useEffect, useState } from "react"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { getAuth, signInAnonymously } from "firebase/auth"
 
+import "../firebase"
 import { SessionProvider } from "../context/SessionProvider"
 import PrologSessionWrapper from "../context/PrologSessionWrapper"
 import Sandbox from "./PrologTestComponents/SandBox"
@@ -33,15 +36,41 @@ const router = createBrowserRouter([
   },
 ])
 
+const auth = getAuth()
+
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  useEffect(() => {
+    const authenticate = async () => {
+      if (!isAuthenticated) {
+        try {
+          await signInAnonymously(auth)
+
+          setIsAuthenticated(true)
+        } catch (error) {
+          console.error(error)
+        }
+      }
+    }
+
+    authenticate()
+  }, [isAuthenticated])
+
   return (
-    <SessionProvider>
-      <PrologSessionWrapper>
-        <div className="app">
-          <RouterProvider router={router} />
-        </div>
-      </PrologSessionWrapper>
-    </SessionProvider>
+    <>
+      {isAuthenticated ? (
+        <SessionProvider>
+          <PrologSessionWrapper>
+            <div className="app">
+              <RouterProvider router={router} />
+            </div>
+          </PrologSessionWrapper>
+        </SessionProvider>
+      ) : (
+        <h1>App Not Authenticated 😿</h1>
+      )}
+    </>
   )
 }
 
