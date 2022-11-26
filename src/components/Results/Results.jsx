@@ -4,7 +4,7 @@ import { useSession } from "../../context/SessionProvider"
 import useProlog from "../../hooks/useProlog"
 
 const Results = () => {
-  const [winningHouse, setWinnindHouse] = useState("")
+  const [winningHouse, setWinningHouse] = useState("")
 
   const { query } = useProlog()
 
@@ -29,8 +29,10 @@ const Results = () => {
         .replaceAll(/\[|\]|,|H = /g, "")
         .replaceAll("~", ",")
 
-      setWinnindHouse(formattedResult)
+      setWinningHouse(formattedResult)
     })
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentScore])
 
   return (
