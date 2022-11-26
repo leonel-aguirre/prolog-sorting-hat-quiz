@@ -1,10 +1,5 @@
 import { initializeApp } from "firebase/app"
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  signInAnonymously,
-} from "firebase/auth"
-import { getDatabase, set, ref, onValue } from "firebase/database"
+import { getDatabase } from "firebase/database"
 
 const {
   REACT_APP_FIREBASE_API_KEY,
@@ -30,12 +25,4 @@ const app = initializeApp(firebaseConfig)
 
 const database = getDatabase(app)
 
-export {
-  database,
-  set,
-  ref,
-  onValue,
-  getAuth,
-  signInWithEmailAndPassword,
-  signInAnonymously,
-}
+export { database }
