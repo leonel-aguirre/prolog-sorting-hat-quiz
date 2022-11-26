@@ -4,18 +4,20 @@ import { onValue, ref } from "firebase/database"
 import { database } from "../../firebase"
 
 const History = () => {
-  const [historyData, setHistoryData] = useState([])
+  const [historyData, setHistoryData] = useState({})
 
   useEffect(() => {
     onValue(ref(database, "history"), (snapshot) => {
       const data = snapshot.val()
 
-      setHistoryData(data)
+      if (data) {
+        setHistoryData(data)
+      }
     })
   }, [])
 
   const renderResults = () => {
-    if (historyData.length > 0) {
+    if (Object.keys(historyData).length > 0) {
     } else {
       return <h1>Oops! Looks like this is empty 😹</h1>
     }
