@@ -94,14 +94,22 @@ const Results = () => {
         <p className="results__want-to-submit-text">
           Do you want to submit your results?
         </p>
-        <div className="results__button-container">
+        <div className="results__buttons-container">
           <GlowButton
             color={buttonColor}
             onClick={() => {
               setIsModalOpen(true)
             }}
           >
-            Send
+            Submit
+          </GlowButton>
+          <GlowButton
+            color={buttonColor}
+            onClick={() => {
+              navigate("/")
+            }}
+          >
+            Back to Home
           </GlowButton>
         </div>
       </div>
@@ -146,7 +154,7 @@ const Results = () => {
               type="button"
               onClick={submitButtonHandler}
             >
-              Submit
+              Send
             </GlowButton>
           </form>
         </div>

@@ -84,8 +84,11 @@
     margin-top: $space-5;
   }
 
-  &__button-container {
+  &__buttons-container {
     margin-top: $space-3;
+    display: flex;
+    flex-direction: column;
+    row-gap: $space-2;
   }
 
   &__you-belong-to-text {
