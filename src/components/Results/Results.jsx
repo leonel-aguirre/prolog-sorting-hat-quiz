@@ -10,6 +10,7 @@ import {
   RAVENCLAW,
   SLYTHERIN,
   SET_CURRENT_CATEGORY_INDEX,
+  MAX_USERNAME_LENGTH,
 } from "../../constants"
 import { useSession } from "../../context/SessionProvider"
 import { database } from "../../firebase"
@@ -143,6 +144,14 @@ const Results = () => {
     )
   }
 
+  const userNameInputHandler = ({ target }) => {
+    const value = target.value
+
+    if (value.length <= MAX_USERNAME_LENGTH) {
+      setUserName(value)
+    }
+  }
+
   return (
     <div
       className={`results ${
@@ -172,8 +181,8 @@ const Results = () => {
               type="text"
               placeholder="Type in your name"
               className="results__user-name-input"
-              onChange={({ target }) => setUserName(target.value)}
-              onBlur={({ target }) => setUserName(target.value)}
+              onChange={userNameInputHandler}
+              onBlur={userNameInputHandler}
               value={userName}
             />
             <GlowButton
