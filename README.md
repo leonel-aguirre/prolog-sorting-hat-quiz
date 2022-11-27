@@ -14,6 +14,8 @@ git clone https://github.com/leonel-aguirre/prolog-sorting-hat-quiz.git
 
 However, this will require you to first have installed [git]("https://git-scm.com/") in your environment. If you don't have it then you can just download the repo through the **Download ZIP** option in Github's web client.
 
+---
+
 #### Install NodeJS
 
 This project was built using the [React library]("https://reactjs.org/"), which means it must be executed using [Node.js]("https://nodejs.org/en/"), to do so, you must first download Node from the downloads section of its site and install it in your environment.
@@ -30,6 +32,8 @@ npm --version
 # 8.19.1 (Version might be different for you).
 ```
 
+---
+
 #### Install Dependencies
 
 By default the repo does not come with the dependencies of this project already installed, so, you will need to run the command in the root directory:
@@ -39,6 +43,8 @@ npm i
 ```
 
 This will create a `node_modules` folder containing all the required dependencies.
+
+---
 
 #### Run the web app
 
