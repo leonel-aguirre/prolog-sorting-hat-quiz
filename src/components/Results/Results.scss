@@ -1,0 +1,132 @@
+@use "../../sass/index.scss" as *;
+
+.results {
+  $results-ready-text-background: monochrome-gradient(
+    lighten-1($color-purple),
+    45deg
+  );
+  $red-house-text-background: monochrome-gradient(lighten-1($color-red), 45deg);
+  $blue-house-text-background: monochrome-gradient(
+    lighten-1($color-blue),
+    45deg
+  );
+  $yellow-house-text-background: monochrome-gradient(
+    lighten-1($color-yellow),
+    45deg
+  );
+  $green-house-text-background: monochrome-gradient(
+    lighten-1($color-green),
+    45deg
+  );
+  $purple-background: monochrome-gradient(darken-4($color-purple), 45deg);
+  $red-background: monochrome-gradient(darken-4($color-red), 45deg);
+  $blue-background: monochrome-gradient(darken-4($color-blue), 45deg);
+  $yellow-background: monochrome-gradient(darken-4($color-yellow), 45deg);
+  $green-background: monochrome-gradient(darken-4($color-green), 45deg);
+
+  background: $purple-background;
+
+  &.is-gryffindor {
+    background: $red-background;
+  }
+
+  &.is-ravenclaw {
+    background: $blue-background;
+  }
+
+  &.is-hufflepuff {
+    background: $yellow-background;
+  }
+
+  &.is-slytherin {
+    background: $green-background;
+  }
+
+  &__container {
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 $space-2;
+  }
+
+  &__pre-results-container,
+  &__house-results-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__results-ready-title {
+    @extend %h1-sans;
+
+    font-weight: $font-weight-extrabold;
+    background: $results-ready-text-background;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__reveal-house-text {
+    @extend %body-sans;
+
+    font-weight: $font-weight-bold;
+    margin-top: $space-5;
+  }
+
+  &__button-container {
+    margin-top: $space-3;
+  }
+
+  &__you-belong-to-text {
+    @extend %h3-sans;
+
+    font-weight: $font-weight-bold;
+  }
+
+  &__winning-house-text {
+    @extend %large-sans;
+
+    font-weight: $font-weight-extrabold;
+    margin-top: $space-2;
+
+    &.is-gryffindor {
+      background: $red-house-text-background;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &.is-ravenclaw {
+      background: $blue-house-text-background;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &.is-hufflepuff {
+      background: $yellow-house-text-background;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &.is-slytherin {
+      background: $green-house-text-background;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &__want-to-submit-text {
+    @extend %body-sans;
+
+    font-weight: $font-weight-bold;
+    margin-top: $space-6;
+  }
+}

@@ -4,15 +4,17 @@ $glow-button-background-color: $color-black;
 
 .glow-button {
   $glow-button-text-color: $color-white;
+  $button-min-width: 280px;
 
   @extend %h4-sans;
 
-  padding: $space-2 $space-6;
+  padding: $space-2 $space-2;
   color: $glow-button-text-color;
   font-weight: $font-weight-bold;
   transition: box-shadow 0.5s, color 0.5s;
   border-radius: 15px;
   border: 2px solid transparent;
+  min-width: $button-min-width;
 
   &:hover {
     cursor: pointer;
@@ -21,6 +23,7 @@ $glow-button-background-color: $color-black;
 
   &.is-small {
     padding: $space-1 $space-3;
+    min-width: fit-content;
   }
 
   &.is-purple {
