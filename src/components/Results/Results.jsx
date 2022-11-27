@@ -1,7 +1,8 @@
 import "./Results.scss"
 
 import { useEffect, useState } from "react"
-import { push, ref, set } from "firebase/database"
+import { useNavigate } from "react-router-dom"
+import { push, ref } from "firebase/database"
 
 import { GRYFFINDOR, HUFFLEPUFF, RAVENCLAW, SLYTHERIN } from "../../constants"
 import { useSession } from "../../context/SessionProvider"
@@ -18,6 +19,7 @@ const Results = () => {
 
   const { query } = useProlog()
   const { currentScore } = useSession()
+  const navigate = useNavigate()
 
   useEffect(() => {
     query(`determine_house(${currentScore}, H).`, (result) => {
@@ -32,12 +34,14 @@ const Results = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentScore])
 
-  const submitButtonHandler = () => {
+  const submitButtonHandler = async () => {
     if (userName && winningHouse) {
-      push(ref(database, "history"), {
+      await push(ref(database, "history"), {
         name: userName,
         house: winningHouse,
       })
+
+      navigate("/history")
     }
   }
 
@@ -97,7 +101,7 @@ const Results = () => {
               setIsModalOpen(true)
             }}
           >
-            Submit
+            Send
           </GlowButton>
         </div>
       </div>
