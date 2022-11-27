@@ -12,14 +12,13 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Web App.
 
-- [ ] 🟡 Implement a way of using modals in the app and complete the Results page submit flow.
-- [ ] 🟢 Implement the UI and styling for the History page.
+- [ ] 🟡 Implement the UI and styling for the History page.
 
 #### General.
 
+- [ ] 🟡 Update the site's icon.
+- [ ] 🟡 Deploy the site into GitHub pages.
 - [ ] 🟢 Update `README.md` file with latest project information, it must contain how to run the project from start to finish.
-- [ ] 🟢 Deploy the site into GitHub pages.
-- [ ] 🟢 Update the site's icon.
 
 ### Completed tasks:
 
@@ -111,6 +110,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 - [x] Implement the functionality of the History page, it must only load the records from firebase and show them to the user.
 - [x] Store quiz results into firebase at Results page. User must be able to store its result after finishing the quiz into the history database.
 - [x] Implement the UI and styling for the Results page.
+- [x] Implement a way of using modals in the app and complete the Results page submit flow.
 
 ### Priority order:
 

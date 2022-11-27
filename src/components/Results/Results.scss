@@ -1,6 +1,12 @@
-@use "../../sass/index.scss" as *;
+@use "../../sass/index" as *;
 
 .results {
+  $modal-background-color: $color-black;
+  $modal-close-button-text-color: $color-white;
+  $modal-close-button-background-color: $color-black;
+  $red-gradient: monochrome-gradient($color-red, 45deg);
+  $purple-gradient: monochrome-gradient($color-purple, 45deg);
+
   $results-ready-text-background: monochrome-gradient(
     lighten-1($color-purple),
     45deg
@@ -78,8 +84,12 @@
     margin-top: $space-5;
   }
 
+  &__buttons-container,
   &__button-container {
     margin-top: $space-3;
+    display: flex;
+    flex-direction: column;
+    row-gap: $space-2;
   }
 
   &__you-belong-to-text {
@@ -128,5 +138,91 @@
 
     font-weight: $font-weight-bold;
     margin-top: $space-6;
+  }
+
+  &__results-form-modal {
+    display: flex;
+    flex-direction: column;
+    background: $modal-background-color;
+    padding: $space-3;
+    margin: 0 $space-2;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px transparentize($color-white, 0.85);
+
+    @include breakpoint-min(bp(small)) {
+      min-width: 500px;
+    }
+  }
+
+  &__modal-title-and-cancel-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__submit-your-results-text {
+    @extend %h4-sans;
+
+    color: $color-white;
+    text-transform: capitalize;
+  }
+
+  &__modal-close-button {
+    @extend %body-sans;
+
+    width: fit-content;
+    border: 2px solid transparent;
+    transition: box-shadow 0.5s, color 0.5s;
+    padding: $space-1;
+    color: $modal-close-button-text-color;
+    font-weight: $font-weight-bold;
+    border-radius: 15px;
+    line-height: 13px;
+    background: linear-gradient(
+          $modal-close-button-background-color,
+          $modal-close-button-background-color
+        )
+        padding-box,
+      $red-gradient border-box;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-black;
+      box-shadow: 0 0 20px $color-red;
+      background: $red-gradient padding-box, $red-gradient border-box;
+    }
+
+    &:active {
+      box-shadow: 0 0 40px $color-red;
+    }
+  }
+
+  &__submit-results-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: $space-4;
+  }
+
+  &__user-name-input {
+    @extend %h4-sans;
+
+    margin-bottom: $space-2;
+    padding: $space-1 0;
+    text-align: center;
+    border-radius: 15px;
+    color: $color-black;
+    font-weight: $font-weight-bold;
+    border: 2px solid transparent;
+    transition: box-shadow 0.5s;
+    background: linear-gradient($color-white, $color-white) padding-box,
+      $purple-gradient border-box;
+
+    &:hover {
+      cursor: text;
+      box-shadow: 0 0 20px $color-purple;
+    }
+
+    &:active {
+      box-shadow: 0 0 40px $color-purple;
+    }
   }
 }
