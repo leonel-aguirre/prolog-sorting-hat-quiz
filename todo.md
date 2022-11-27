@@ -12,7 +12,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Web App.
 
-- [ ] 🟢 Implement the UI and styling for the Results page.
+- [ ] 🟡 Implement a way of using modals in the app and complete the Results page submit flow.
 - [ ] 🟢 Implement the UI and styling for the History page.
 
 #### General.
@@ -110,6 +110,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 - [x] Connect app with firebase, the goal is to store and load the history from there.
 - [x] Implement the functionality of the History page, it must only load the records from firebase and show them to the user.
 - [x] Store quiz results into firebase at Results page. User must be able to store its result after finishing the quiz into the history database.
+- [x] Implement the UI and styling for the Results page.
 
 ### Priority order:
 
