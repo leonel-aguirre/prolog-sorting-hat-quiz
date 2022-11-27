@@ -1,0 +1,21 @@
+@use "../../../sass/index" as *;
+
+.modal {
+  $modal-background-color: transparentize($color-black, 0.2);
+
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  transition: visibility 0s, opacity 1s;
+  visibility: hidden;
+  opacity: 0;
+
+  &.is-open {
+    visibility: visible;
+    opacity: 1;
+    background: $modal-background-color;
+  }
+}
