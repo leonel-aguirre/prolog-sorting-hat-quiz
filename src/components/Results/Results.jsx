@@ -7,28 +7,17 @@ import { GRYFFINDOR, HUFFLEPUFF, RAVENCLAW, SLYTHERIN } from "../../constants"
 import { useSession } from "../../context/SessionProvider"
 import { database } from "../../firebase"
 import GlowButton from "../CoreUI/GlowButton/GlowButton"
+import Modal from "../CoreUI/Modal/Modal"
 import useProlog from "../../hooks/useProlog"
 
 const Results = () => {
   const [winningHouse, setWinningHouse] = useState("")
   const [userName, setUserName] = useState("")
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [shouldShowResults, setShouldShowResults] = useState(false)
 
   const { query } = useProlog()
-
-  const {
-    categoryConfigurationList,
-    currentCategoryIndex,
-    currentQuestionID,
-    currentScore,
-  } = useSession()
-
-  console.log({
-    categoryConfigurationList,
-    currentCategoryIndex,
-    currentQuestionID,
-    currentScore,
-  })
+  const { currentScore } = useSession()
 
   useEffect(() => {
     query(`determine_house(${currentScore}, H).`, (result) => {
@@ -102,7 +91,14 @@ const Results = () => {
           Do you want to submit your results?
         </p>
         <div className="results__button-container">
-          <GlowButton color={buttonColor}>Submit</GlowButton>
+          <GlowButton
+            color={buttonColor}
+            onClick={() => {
+              setIsModalOpen(true)
+            }}
+          >
+            Submit
+          </GlowButton>
         </div>
       </div>
     )
@@ -117,19 +113,40 @@ const Results = () => {
       <div className="results__container">
         {shouldShowResults ? renderResults() : renderPreResultsUI()}
       </div>
-      {/* <form>
-        <input
-          type="text"
-          name=""
-          id=""
-          onChange={({ target }) => setUserName(target.value)}
-          onBlur={({ target }) => setUserName(target.value)}
-          value={userName}
-        />
-        <button type="button" onClick={submitButtonHandler}>
-          Submit
-        </button>
-      </form> */}
+
+      <Modal isOpen={isModalOpen}>
+        <div className="results__results-form-modal">
+          <div className="results__modal-title-and-cancel-container">
+            <h4 className="results__submit-your-results-text">
+              Submit your results
+            </h4>
+            <button
+              className="results__modal-close-button"
+              onClick={() => setIsModalOpen(false)}
+            >
+              ×
+            </button>
+          </div>
+
+          <form className="results__submit-results-form">
+            <input
+              type="text"
+              placeholder="Type in your name here"
+              className="results__user-name-input"
+              onChange={({ target }) => setUserName(target.value)}
+              onBlur={({ target }) => setUserName(target.value)}
+              value={userName}
+            />
+            <GlowButton
+              isSmall={true}
+              type="button"
+              onClick={submitButtonHandler}
+            >
+              Submit
+            </GlowButton>
+          </form>
+        </div>
+      </Modal>
     </div>
   )
 }
