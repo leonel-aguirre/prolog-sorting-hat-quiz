@@ -170,7 +170,7 @@ const Results = () => {
           <form className="results__submit-results-form">
             <input
               type="text"
-              placeholder="Type in your name here"
+              placeholder="Type in your name"
               className="results__user-name-input"
               onChange={({ target }) => setUserName(target.value)}
               onBlur={({ target }) => setUserName(target.value)}

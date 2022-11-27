@@ -145,9 +145,13 @@
     flex-direction: column;
     background: $modal-background-color;
     padding: $space-3;
-    min-width: 500px;
+    margin: 0 $space-2;
     border-radius: 15px;
     box-shadow: 0px 0px 20px transparentize($color-white, 0.85);
+
+    @include breakpoint-min(bp(small)) {
+      min-width: 500px;
+    }
   }
 
   &__modal-title-and-cancel-container {
@@ -202,7 +206,7 @@
     @extend %h4-sans;
 
     margin-bottom: $space-2;
-    padding: $space-1 $space-3;
+    padding: $space-1 0;
     text-align: center;
     border-radius: 15px;
     color: $color-black;
