@@ -5,9 +5,11 @@ const GlowButton = ({
   onClick,
   color = "purple",
   isSmall = false,
+  ...rest
 }) => {
   return (
     <button
+      {...rest}
       className={`glow-button is-${color} is-${isSmall ? "small" : "large"}`}
       onClick={onClick}
     >
