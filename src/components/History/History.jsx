@@ -50,7 +50,7 @@ const History = () => {
       <div className="history__container">
         <h1 className="history__title">History</h1>
         <p className="history__description">
-          Here are all the submitted results by all users:
+          Here are all the submitted results by users:
         </p>
         {renderResults()}
         <div className="history__button-container">

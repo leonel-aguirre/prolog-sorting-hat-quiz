@@ -16,8 +16,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### General.
 
-- [ ] 🟡 Deploy the site into GitHub pages.
-- [ ] 🟢 Update `README.md` file with latest project information, it must contain how to run the project from start to finish.
+😸✅ List is currently Empty ✅😸
 
 ### Completed tasks:
 
@@ -112,6 +111,8 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 - [x] Implement a way of using modals in the app and complete the Results page submit flow.
 - [x] Implement the UI and styling for the History page.
 - [x] Update the site's icon.
+- [x] Deploy the site into GitHub pages.
+- [x] Update `README.md` file with latest project information, it must contain how to run the project from start to finish.
 
 ### Priority order:
 
