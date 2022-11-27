@@ -59,3 +59,9 @@ $font-weight-black: 900;
 
   font-size: 24px;
 }
+
+%large-sans {
+  @extend %font-sans;
+
+  font-size: 80px;
+}
