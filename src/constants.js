@@ -10,3 +10,6 @@ export const GRYFFINDOR = "GRYFFINDOR"
 export const RAVENCLAW = "RAVENCLAW"
 export const HUFFLEPUFF = "HUFFLEPUFF"
 export const SLYTHERIN = "SLYTHERIN"
+
+// General Purpose Constants.
+export const MAX_USERNAME_LENGTH = 15

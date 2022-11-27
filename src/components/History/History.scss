@@ -1,0 +1,78 @@
+@use "../../sass/index.scss" as *;
+
+.history {
+  $purple-background: monochrome-gradient(darken-4($color-purple), 45deg);
+  $title-text-background: monochrome-gradient(lighten-1($color-purple), 45deg);
+
+  min-height: 100vh;
+  background: $purple-background;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $space-6 $space-2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    @extend %h1-sans;
+
+    font-weight: $font-weight-extrabold;
+    background: $title-text-background;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__description {
+    @extend %body-sans;
+
+    font-weight: $font-weight-bold;
+    margin-top: $space-1;
+    text-align: center;
+  }
+
+  &__results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: $space-5;
+    column-gap: $space-4;
+
+    @include breakpoint-min(bp(small)) {
+      margin-top: $space-6;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+
+  &__results-grid-heading {
+    @extend %h4-sans;
+
+    text-align: center;
+    font-weight: $font-weight-extrabold;
+
+    &.is-id,
+    &.is-animal {
+      display: none;
+
+      @include breakpoint-min(bp(small)) {
+        display: block;
+      }
+    }
+  }
+
+  &__results-grid-divider {
+    grid-column: 1 / span 2;
+    border-bottom: 1px solid transparentize($color-white, 0.5);
+    margin: $space-1 0;
+
+    @include breakpoint-min(bp(small)) {
+      grid-column: 1 / span 4;
+    }
+  }
+
+  &__button-container {
+    margin-top: $space-5;
+  }
+}
