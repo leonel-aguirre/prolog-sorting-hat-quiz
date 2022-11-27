@@ -1,7 +1,7 @@
 import "./App.scss"
 
 import { useEffect, useState } from "react"
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createHashRouter, RouterProvider } from "react-router-dom"
 import { getAuth, signInAnonymously } from "firebase/auth"
 
 import "../firebase"
@@ -14,28 +14,31 @@ import Results from "./Results/Results"
 import History from "./History/History"
 import Loader from "./CoreUI/Loader/Loader"
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/quiz",
-    element: <Quiz />,
-  },
-  {
-    path: "/history",
-    element: <History />,
-  },
-  {
-    path: "/results",
-    element: <Results />,
-  },
-  {
-    path: "/sandbox",
-    element: <Sandbox />,
-  },
-])
+const router = createHashRouter(
+  [
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/quiz",
+      element: <Quiz />,
+    },
+    {
+      path: "/history",
+      element: <History />,
+    },
+    {
+      path: "/results",
+      element: <Results />,
+    },
+    {
+      path: "/sandbox",
+      element: <Sandbox />,
+    },
+  ],
+  { basename: "/" }
+)
 
 const auth = getAuth()
 
