@@ -26,10 +26,10 @@ const History = () => {
     if (Object.keys(historyData).length > 0) {
       return (
         <div className="history__results-grid">
-          <p className="history__results-grid-heading">ID</p>
-          <p className="history__results-grid-heading">NAME</p>
-          <p className="history__results-grid-heading">HOUSE</p>
-          <p className="history__results-grid-heading"></p>
+          <p className="history__results-grid-heading is-id">ID</p>
+          <p className="history__results-grid-heading is-name">NAME</p>
+          <p className="history__results-grid-heading is-house">HOUSE</p>
+          <p className="history__results-grid-heading is-animal"></p>
           <div className="history__results-grid-divider" />
           {Object.keys(historyData).map((key, index) => {
             const { name, house } = historyData[key]

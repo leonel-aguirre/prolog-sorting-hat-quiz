@@ -47,11 +47,23 @@
     }
   }
 
+  &__id {
+    display: none;
+
+    @include breakpoint-min(bp(small)) {
+      display: block;
+    }
+  }
+
   &__animal {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     margin-top: $space-1;
+
+    @include breakpoint-min(bp(small)) {
+      display: flex;
+    }
   }
 
   &__animal-img {

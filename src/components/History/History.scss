@@ -10,7 +10,7 @@
   &__container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: $space-6 0;
+    padding: $space-6 $space-2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,13 +31,19 @@
 
     font-weight: $font-weight-bold;
     margin-top: $space-1;
+    text-align: center;
   }
 
   &__results-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin-top: $space-6;
+    grid-template-columns: 1fr 1fr;
+    margin-top: $space-5;
     column-gap: $space-4;
+
+    @include breakpoint-min(bp(small)) {
+      margin-top: $space-6;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
   }
 
   &__results-grid-heading {
@@ -45,12 +51,25 @@
 
     text-align: center;
     font-weight: $font-weight-extrabold;
+
+    &.is-id,
+    &.is-animal {
+      display: none;
+
+      @include breakpoint-min(bp(small)) {
+        display: block;
+      }
+    }
   }
 
   &__results-grid-divider {
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 2;
     border-bottom: 1px solid transparentize($color-white, 0.5);
     margin: $space-1 0;
+
+    @include breakpoint-min(bp(small)) {
+      grid-column: 1 / span 4;
+    }
   }
 
   &__button-container {
