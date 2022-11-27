@@ -1,0 +1,60 @@
+@use "../../../sass/index.scss" as *;
+
+.history-row {
+  $red-text-background: monochrome-gradient($color-red, 45deg);
+  $blue-text-background: monochrome-gradient($color-blue, 45deg);
+  $yellow-text-background: monochrome-gradient($color-yellow, 45deg);
+  $green-text-background: monochrome-gradient($color-green, 45deg);
+
+  &__id,
+  &__name,
+  &__house {
+    @extend %h4-sans;
+
+    text-align: center;
+    font-weight: $font-weight-regular;
+    font-weight: $font-weight-bold;
+    margin-top: $space-1;
+  }
+
+  &__house {
+    &.is-gryffindor {
+      background: $red-text-background;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &.is-ravenclaw {
+      background: $blue-text-background;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &.is-hufflepuff {
+      background: $yellow-text-background;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &.is-slytherin {
+      background: $green-text-background;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &__animal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: $space-1;
+  }
+
+  &__animal-img {
+    width: 24px;
+  }
+}
