@@ -12,7 +12,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 
 #### Web App.
 
-- [ ] 🟡 Implement the UI and styling for the History page.
+😸✅ List is currently Empty ✅😸
 
 #### General.
 
@@ -86,7 +86,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
   */
   ```
 
-  - [x] Create a procedure that determines which house to return based on the results array. The results array will be the sum of the weights from the options the user selected for all the questions during the quiz, so it will be of the following shape: `[0.75, 0.15, 0.1, 0.1]`. Example:
+- [x] Create a procedure that determines which house to return based on the results array. The results array will be the sum of the weights from the options the user selected for all the questions during the quiz, so it will be of the following shape: `[0.75, 0.15, 0.1, 0.1]`. Example:
 
   ```pl
   determine_house([0.75, 0.15, 0.1, 0.1], R).
@@ -111,6 +111,7 @@ Tasks must be listed from highest to lowest priority, once a task is done it sho
 - [x] Store quiz results into firebase at Results page. User must be able to store its result after finishing the quiz into the history database.
 - [x] Implement the UI and styling for the Results page.
 - [x] Implement a way of using modals in the app and complete the Results page submit flow.
+- [x] Implement the UI and styling for the History page.
 
 ### Priority order:
 
