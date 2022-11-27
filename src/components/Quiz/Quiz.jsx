@@ -12,6 +12,7 @@ import {
 import { useSession } from "../../context/SessionProvider"
 import useProlog from "../../hooks/useProlog"
 import Question from "./Question/Question"
+import Loader from "../CoreUI/Loader/Loader"
 
 const Quiz = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -146,7 +147,7 @@ const Quiz = () => {
         </pre>
       )}
       {isLoading ? (
-        <h1 className="quiz__loader">Loading ...</h1>
+        <Loader />
       ) : (
         <Question question={currentQuestion} optionIDs={currentOptionsIDS} />
       )}

@@ -7,6 +7,7 @@ import randomLoader from "tau-prolog/modules/random"
 import KnowledgeBase from "./knowledgeBase.pl"
 import { SET_SESSION } from "../constants"
 import { useSession, useSessionDispatch } from "./SessionProvider"
+import Loader from "../components/CoreUI/Loader/Loader"
 
 promisesLoader(pl)
 randomLoader(pl)
@@ -43,7 +44,7 @@ const PrologSessionWrapper = ({ children }) => {
   }, [session])
 
   if (!session || !isProgramLoaded) {
-    return <h1>Loading...</h1>
+    return <Loader />
   }
 
   return <>{children}</>

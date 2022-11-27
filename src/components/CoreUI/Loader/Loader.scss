@@ -1,0 +1,12 @@
+@use "../../../sass/index" as *;
+
+.loader {
+  @extend %h1-sans;
+
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-white;
+  background: $color-black;
+}

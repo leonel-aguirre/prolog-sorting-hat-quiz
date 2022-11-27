@@ -12,6 +12,7 @@ import Home from "./Home/Home"
 import Quiz from "./Quiz/Quiz"
 import Results from "./Results/Results"
 import History from "./History/History"
+import Loader from "./CoreUI/Loader/Loader"
 
 const router = createBrowserRouter([
   {
@@ -68,7 +69,7 @@ const App = () => {
           </PrologSessionWrapper>
         </SessionProvider>
       ) : (
-        <h1>App Not Authenticated 😿</h1>
+        <Loader />
       )}
     </>
   )
