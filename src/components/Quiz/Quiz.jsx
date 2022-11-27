@@ -7,6 +7,7 @@ import {
   SET_CATEGORY_CONFIGURATION_LIST,
   SET_CURRENT_CATEGORY_INDEX,
   SET_CURRENT_QUESTION_ID,
+  SET_CURRENT_SCORE,
 } from "../../constants"
 import { useSession } from "../../context/SessionProvider"
 import useProlog from "../../hooks/useProlog"
@@ -39,7 +40,8 @@ const Quiz = () => {
   }, [currentCategoryIndex])
 
   // Sets currentCategoryIndex to 0 and then generates a new category order list,
-  // both values are stored in knowledge base and store.
+  // both values are stored in knowledge base and store. At the end, currentScore
+  // is also reset to the initial value.
   useEffect(() => {
     updatePersistanceVariable(
       "currentCategoryIndex",
@@ -55,6 +57,13 @@ const Quiz = () => {
             categoryConfigurationList,
             formattedResult,
             SET_CATEGORY_CONFIGURATION_LIST
+          )
+
+          updatePersistanceVariable(
+            "currentScore",
+            currentScore,
+            "[0,0,0,0]",
+            SET_CURRENT_SCORE
           )
         })
       }

@@ -4,7 +4,13 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { push, ref } from "firebase/database"
 
-import { GRYFFINDOR, HUFFLEPUFF, RAVENCLAW, SLYTHERIN } from "../../constants"
+import {
+  GRYFFINDOR,
+  HUFFLEPUFF,
+  RAVENCLAW,
+  SLYTHERIN,
+  SET_CURRENT_CATEGORY_INDEX,
+} from "../../constants"
 import { useSession } from "../../context/SessionProvider"
 import { database } from "../../firebase"
 import GlowButton from "../CoreUI/GlowButton/GlowButton"
@@ -17,9 +23,30 @@ const Results = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [shouldShowResults, setShouldShowResults] = useState(false)
 
-  const { query } = useProlog()
-  const { currentScore } = useSession()
+  const { query, updatePersistanceVariable } = useProlog()
+  const { currentScore, currentCategoryIndex } = useSession()
   const navigate = useNavigate()
+
+  // If no score was registered, user is redirected to home page.
+  useEffect(() => {
+    if (currentScore === "[0,0,0,0]") {
+      navigate("/")
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Sets currentCategoryIndex to 0.
+  useEffect(() => {
+    updatePersistanceVariable(
+      "currentCategoryIndex",
+      currentCategoryIndex,
+      0,
+      SET_CURRENT_CATEGORY_INDEX
+    )
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     query(`determine_house(${currentScore}, H).`, (result) => {

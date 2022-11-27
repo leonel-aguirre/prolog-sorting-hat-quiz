@@ -84,7 +84,8 @@
     margin-top: $space-5;
   }
 
-  &__buttons-container {
+  &__buttons-container,
+  &__button-container {
     margin-top: $space-3;
     display: flex;
     flex-direction: column;
